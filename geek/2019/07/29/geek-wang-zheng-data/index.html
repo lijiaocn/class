@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="王争，毕业于西安交通大学计算机专业。写代码的时候，我会不由自主考虑很多性能方面的问题。我写出时间复杂度高、空间复杂度高的垃圾代码越来越少了，算法能力提升了很多，编程能力也有了质的飞跃。,王争、数据结构、算法、极客时间,">
+<meta name="keywords" content="王争,数据结构,算法,极客时间极客出品">
+<meta name="author" content="">
+
+<title>数据结构和算法之美-Google 工程师-王争-极客时间|精品网课</title>
+
+<link rel="stylesheet" type="text/css" href="/class/assets/bootstrap-3.3.7/css/bootstrap.min.css">
+<!--link rel="stylesheet" type="text/css" href="/class/assets/bootstrap-3.3.7/css/bootstrap-theme.min.css"-->
+<link rel="stylesheet" type="text/css" href="/class/assets/css/default.css">
+<link rel="stylesheet" type="text/css" href="/class/assets/css/highlight.css">
+<link rel="alternate" type="application/rss+xml" title="精品网课" href="/feed.xml">
+<link rel="icon" href="/favicon.ico">
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@graph":[
+    {
+      "@type": "Organization",
+      "logo": "https://www.lijiaocn.com/class/img/logo-112x112.jpg",    //LOGO图片地址，必须是112x112，.jpg,.png,.gif
+      "url": "https://www.lijiaocn.com"               //与Logo相关联的url
+    },
+/*   
+    {   
+      "@type": "WebSite",
+      "url": "https://www.lijiaocn.com",              //被搜索的网站
+      "potentialAction": {
+        "@type": "SearchAction", 
+                                                      //targe指定的域名必须是站点域名，不能用第三方搜索
+        "target": "https://www.lijiaocn.com/search?q={search_term_string}+site%3Alijiaocn.com", 
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Person",                         //社交账号
+	  "name": "精品网课",                    //组织或个人名称
+      "url": "https://www.lijiaocn.com",         //网站地址
+      "sameAs": [
+        "http://www.facebook.com/your-profile",  //社交账号地址，不支持的国内的
+        "http://instagram.com/yourProfile",
+        "http://www.linkedin.com/in/yourprofile",
+        "http://plus.google.com/your_profile"
+      ]
+    },
+*/
+    {
+      "@type": "BreadcrumbList",
+       "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          
+          
+          "name": "极客技术专栏",
+          "item": "https://www.lijiaocn.com/class/c/geek/"
+       },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "极客出品",
+          "item": "https://www.lijiaocn.com/class/t/all#极客出品"
+       }]
+    },
+    {
+      "@type": "Article",
+      "dateModified": "2015-02-05T08:00:00+08:00",
+      "datePublished": "2015-02-05T08:00:00+08:00",
+      "headline": "数据结构和算法之美-Google 工程师-王争-极客时间",
+      "image": [                                                //提供三张不同比例的高清图片，长x宽 >= 300 000 
+        "https://www.lijiaocn.com/class/img/cover/1x1/geek-wang-zheng-data.jpg",  //至少：600*600 = 360 000
+        "https://www.lijiaocn.com/class/img/cover/4x3/geek-wang-zheng-data.jpg",  //至少：800*600 = 480 000
+        "https://www.lijiaocn.com/class/img/cover/16x9/geek-wang-zheng-data.jpg"  //至少：960*540 = 518 400
+      ],
+      "author": {
+        "@type": "Person",
+        "name": ""    //作者名称
+      },
+      "publisher": {
+         "@type": "Organization",
+         "name": "精品网课",                          //发布机构名称
+         "logo": {
+           "@type": "ImageObject",
+           "url": "https://www.lijiaocn.com/class/img/logo-112x112.jpg" //发布机构Logo,遵循
+         }
+      },
+      "description": "王争，毕业于西安交通大学计算机专业。写代码的时候，我会不由自主考虑很多性能方面的问题。我写出时间复杂度高、空间复杂度高的垃圾代码越来越少了，算法能力提升了很多，编程能力也有了质的飞跃",
+      "mainEntityOfPage": "https://www.lijiaocn.com/class/geek/2019/07/29/geek-wang-zheng-data/",       //网页权威链接，无重复网页就设置成当前页地址
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "xpath": [
+          "/html/head/title",                              //指向head中的title
+          "/html/head/meta[@name='description']/@content"  //指向head中的description
+         ]
+      }
+    }
+  ]
+ }
+</script>
+
+
+
+<!--Google ads 全局依赖代码 -->
+<script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics 全局依赖代码-->
+<script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-105389858-1"></script>
+<!-- 需要尽早执行的js代码 -->
+<script async="async" src="/class/assets/js/head.js" ></script>
+
+</head>
+<body class="body custom-background">
+    <nav class="navbar navbar-fixed-static topnav">
+        <!-- display sm md lg -->
+<div class="container" >
+  <div class="navbar-header">
+    <button id="navb" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#categories" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar" style="color:black"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="navbar-brand hidden-sm">
+      <span><a href="https://www.lijiaocn.com/class/" title="主页">精品网课</a></span>
+      <span class="glyphicon glyphicon-hand-right" style="margin-left:15px"></span>
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" id="categories">
+    <ul class="nav navbar-nav">
+       
+      
+      
+      <li><a href="/class/c/wangyi2/">网易精品课</a></li>
+       
+      
+      
+      <li><a href="/class/c/wangyi1/">网易专业课</a></li>
+       
+      
+      
+      <li><a href="/class/c/geek/">极客技术专栏</a></li>
+      
+      <li><a href="/class/t/all/">标签</a></li>
+    </ul>
+  </div>
+</div>
+
+    </nav>
+
+    <!--aside class="lsidebar"></aside-->
+
+    <section class="banner">
+        
+    </section>
+
+    <section class="container mainwrapper">
+        <div class="main">
+            <article class="center">
+                <div class="row title">
+  <h1>数据结构和算法之美-Google 工程师-王争-极客时间</h1>
+</div>
+
+<div class="row pageheader">
+  <p>
+<span>
+<a target="_blank" style="color:red;font-weight:bold" href="https://www.lijiaocn.com/discount/">淘宝/天猫优惠券</a>&nbsp&nbsp&nbsp
+<a target="_blank" style="color:red;font-weight:bold" href="https://c.duomai.com/track.php?k=WYppWas1DZpVXZmcDOwMTPklWYmAjMzUjMy0DZp9VZ0l2cmYiRyUSbvNmLzYTMuU3b5ZkMlYkMlE0MlAHd0hWP0Zibj9">网易严选，品味专用</a>
+</span>
+</p>
+
+
+</div>
+
+<div class="row top_ad">
+  <!-- 顶部条幅广告 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="1000173679"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  <br>
+</div>
+
+
+
+
+<div class="row author">
+  <img src="/class/img/cover/16x9/geek-wang-zheng-data.jpg" alt="数据结构和算法之美-Google 工程师-王争-极客时间"/>
+  <br>
+  <p>
+
+<span class="glyphicon glyphicon-folder-open"></span>
+
+
+<span>&nbsp<a href="/class/c/geek/">极客技术专栏</a>&nbsp</span>
+
+
+
+<span class="glyphicon glyphicon-tag"></span>
+<span><a href="/class/t/all/#极客出品">极客出品</a>&nbsp</span>
+
+
+<span><a href="http://qr.liantu.com/api.php?text=https://www.lijiaocn.com/class/geek/2019/07/29/geek-wang-zheng-data/">微信收藏</a></span>
+</p>
+
+</div>
+
+
+<div class="row top_social">
+  
+</div>
+
+<div class="row content">
+  <h2 id="本篇目录">本篇目录</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#本篇目录" id="markdown-toc-本篇目录">本篇目录</a></li>
+  <li><a href="#说明" id="markdown-toc-说明">说明</a></li>
+  <li><a href="#内容介绍" id="markdown-toc-内容介绍">内容介绍</a></li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<h2 id="说明">说明</h2>
+
+<p>这是前 Google 工程师王争在极客时间开设的专栏，主要讲解数据结构和算法，对于面试特别有帮助。</p>
+
+<p>订阅之后可以在移动端和PC端<code class="highlighter-rouge">永久阅读</code>，<strong>新用户可以领取</strong> ：<a href="https://time.geekbang.org/activity/getinvite?gk_ucode=E274D90C022D49">极客时间首次注册30元优惠券</a></p>
+
+<p><img src="/class/img/article/geek-wang-zheng-data.jpeg" alt="数据结构和算法之美-Google 工程师-王争-极客时间" width="250px" /></p>
+
+<h2 id="内容介绍">内容介绍</h2>
+
+<div class="_1kh1ihh6_0"><p>你好，我是王争，毕业于西安交通大学计算机专业。现在回想起来，本科毕业的时候，我的编程水平其实是很差的。直到读研究生的时候，一个师兄给了我一本《算法导论》，说你可以看看，对你的编程会很有帮助。</p>
+<p>没想到，从此我对算法的“迷恋”便一发不可收拾。之后，我如饥似渴地把图书馆里几乎所有数据结构和算法书籍都读了一遍。</p>
+<p>我常常边读边练。没多久，我就发现，写代码的时候，我会不由自主考虑很多性能方面的问题。我写出时间复杂度高、空间复杂度高的垃圾代码越来越少了，算法能力提升了很多，编程能力也有了质的飞跃。得益于此，研究生毕业后，我直接进入 Google，从事 Google 翻译相关的开发工作。</p>
+<p>这是我自己学习数据结构与算法的经历，现在，你可以想想你的情况。</p>
+<ul>
+<li>
+<p>是不是从学校开始，你就觉得数据结构难学，然后一直没认真学？</p>
+</li>
+<li>
+<p>工作中，一遇到数据结构这个坑，你又发自本能地迅速避让，因为你觉得自己不懂，所以也不想深究，反正看起来无关大局？</p>
+</li>
+<li>
+<p>当你想换工作面试，或者研究某个开源项目源码，亦或者和团队讨论某个非框架层面的高可用难题的时候，你又发现，自己的基础跟不上别人的节奏？</p>
+</li>
+</ul>
+<p>如果你是这种情况，其实你并不孤独，这不是你一个人遇到的问题。工作十年间，我见过许多程序员。他们有着各种各样的背景，有很多既有潜力又非常努力，但始终无法在自己现有水平上更进一步。</p><!-- [[[read_end]]] -->
+<p>在技术圈里，我们经常喜欢谈论高大上的架构，比如高可用、微服务、服务治理等等。鲜有人关注代码层面的编程能力，而愿意沉下心来，花几个月时间啃一啃计算机基础知识、认认真真夯实基础的人，简直就是凤毛麟角。</p>
+<p>我认识一位原来腾讯 T4 的技术大牛。在区块链大潮之前，他在腾讯工作了 10 多年，长期负责手机 QQ 后台整体建设。他经历了手机 QQ 从诞生到亿级用户在线的整个过程。后来他去了微众银行，有一天老板让他去做区块链。<strong>他用了不到半年时间，就把区块链的整个技术脉络摸清楚了。</strong> 现在，他是微众银行的区块链负责人，微众科技创新产品部的老总。你说厉害不？你可以花半年时间就能精通一个新的领域吗？为什么他就可以做到？</p>
+<p>我觉得这其中最重要的就是基础足够扎实。他曾经跟我说，像区块链、人工智能这些看似很新的技术，其实一点儿都不“新”。最初学编程的时候，他就把那些基础的知识都学透了。当面临行业变动、新技术更迭的时候，他不断发现，那些所谓的新技术，核心和本质的东西其实就是当初学的那些知识。掌握了这个“规律”之后，他学任何东西都很快，任何新技术都能快速迎头赶上。这就是他快速学习并且获得成功的秘诀。</p>
+<p>所以说，<strong>基础知识就像是一座大楼的地基，它决定了我们的技术高度。而要想快速做出点事情，前提条件一定是基础能力过硬，“内功”要到位</strong>。</p>
+<p>那技术人究竟都需要修炼哪些“内功”呢？我觉得，无外乎就是大学里的那些基础课程，操作系统、计算机网络、编译原理等等，当然还有数据结构和算法。</p>
+<p>可是，我们都知道，像《算法导论》这些经典书籍，虽然很全面，但是过于理论，学起来非常枯燥；而市面很多课程大多缺失真实的开发场景，费劲学完感觉好像还是用不上，过不了几天就忘了。</p>
+<p>所以，我尝试做<span class="orange">一个让你能真正受用的数据结构与算法课程，希望给你指明一个简洁、高效的学习路径，教你一个学习基础知识的通用方法</span> 。那么，关于专栏内容，我是怎样设计的呢？</p>
+<ol>
+<li>
+<p>我根据自己研读数十本算法书籍和多年项目开发的经验，在众多的数据结构和算法中，精选了最实用的内容进行讲解。</p>
+</li>
+<li>
+<p>我不只会教你怎么用，还会告诉你，我们为什么需要这种数据结构和算法，一点点帮你捋清它们背后的设计思想，培养你举一反三的能力。</p>
+</li>
+<li>
+<p>对于每种数据结构和算法，我都会结合真实的软件开发案例来讲解，让你知道，数据结构和算法，究竟应该如何应用到实际的编码中。</p>
+</li>
+</ol>
+<p>为了<strong>由浅入深</strong>地带你学习，我把专栏分成四个<strong>递进</strong>的模块。</p>
+<ol>
+<li><strong>入门篇</strong></li>
+</ol>
+<p>时间、空间复杂度分析是数据结构和算法中非常重要的知识点，贯穿整个专栏的学习过程。但同时也是比较难掌握的，所以我用了 2 节课来讲这部分内容，而且还举了大量的实例，让你一边学一边练，真正能掌握复杂度分析，为后面的学习铺路。</p>
+<p>我希望通过这一模块，你能掌握时间、空间复杂度的概念，大 O 表示法的由来，各种复杂度分析技巧，以及最好、最坏、平均、均摊复杂度分析方法。之后，面对任何代码的复杂度分析，你都能游刃有余、毫不畏惧！</p>
+<ol start="2">
+<li><strong>基础篇</strong></li>
+</ol>
+<p>这部分是专栏中篇幅最大的内容，也是我们学习的重点，共有 26 节内容，涵盖了最基础、最常用的数据结构和算法。针对每种数据结构和算法，我都会结合具体的软件开发实例，由浅入深进行讲解，并适时总结一些实用“宝典”，保证你印象深刻、学有所用。</p>
+<p>比如递归这一节，我会讲到，为什么递归代码比较难写？如何避免堆栈溢出？如何避免递归冗余计算？如何将递归代码转化为非递归代码？</p>
+<ol start="3">
+<li><strong>高级篇</strong></li>
+</ol>
+<p>这部分我会讲一些不是那么常用的数据结构和算法。虽然不常用，但是这些内容你也需要知道。设置这一部分的目的，是为了让你开拓视野，强化训练算法思维、逻辑思维。如果说学完基础部分可以考 80 分，那掌握这一部分就能让你成为尖子生！</p>
+<ol start="4">
+<li><strong>实战篇</strong></li>
+</ol>
+<p>我们整个专栏都是围绕数据结构和算法在具体软件实践中的应用来讲的，所以最后我会通过实战部分串讲一下前面讲到的数据结构和算法。我会拿一些开源项目、框架或者系统设计问题，剖析它们背后的数据结构和算法，让你有一个更加直观的感受。</p>
+<p>人生路上，我们会遇到很多的坎。跨过去，你就可以成长，跨不过去就是困难和停滞。而在后面很长的一段时间里，你都需要为这个困难买单。对于我们技术人来说，更是这样。<strong>既然数据结构和算法这个坎，我们总归是要跨过去，为什么不是现在呢？</strong></p>
+<p>我很感激师兄当年给我的那本《算法导论》，这是我人生中为数不多的转折点之一。没有那本书，也可能就没有今天的我。我希望这个专栏也能成为你的一个人生转折点。</p>
+<p>我希望，通过这个专栏，不仅能帮你跨过数据结构与算法这个坎，还能帮你掌握一种学习知识和技能的方法，帮你度过职场甚至人生的重要时刻！一起加油吧！</p>
+<p><img src="https://static001.geekbang.org/resource/image/8e/d3/8e603e3d795fc0ab2698f6f5eabf14d3.jpg" alt="" /></p>
+</div>
+
+<p>订阅之后可以在移动端和PC端<code class="highlighter-rouge">永久阅读</code>，<strong>新用户可以领取</strong> ：<a href="https://time.geekbang.org/activity/getinvite?gk_ucode=E274D90C022D49">极客时间首次注册30元优惠券</a></p>
+
+<p><img src="/class/img/article/geek-wang-zheng-data.jpeg" alt="数据结构和算法之美-Google 工程师-王争-极客时间" width="250px" /></p>
+
+<h2 id="参考">参考</h2>
+
+<ol>
+  <li><a href="https://www.lijiaocn.com" title="李佶澳的博客">李佶澳的博客</a></li>
+</ol>
+
+
+</div>
+
+<div class="row" >
+  <br>
+  
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align:left;padding:0px">
+
+<span class="glyphicon glyphicon-chevron-left"/>上一篇：<a href="/class/geek/2019/07/29/geek-chen-hao/">洞悉技术的本质，享受科技的乐趣-陈皓-极客时间</a>
+
+</div>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align:right;padding:0px">
+
+下一篇：<a href="/class/geek/2019/07/29/geek-zhang-lei-k8s/">深入剖析Kubernetes-社区维护者-张磊-极客时间</a><span class="glyphicon glyphicon-chevron-right"/>
+
+</div>
+
+
+</div>
+
+<div class="row copyright">
+  <br>
+  <p style="text-align:center">淘宝天猫优惠券（微信扫一扫或长按）</p>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 content">
+		<img src="https://www.lijiaocn.com/img/tuanhaohuo.jpg"></img>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 content">
+		<!-- 底部二维码并列 -->
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8176866190626448"
+			 data-ad-slot="1398175214"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+			 (adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+</div>
+
+</div>
+
+<div class="row page_bottom_ad">
+  <div>
+<a target="_blank" href="https://www.lijiaocn.com/好货/2018/04/25/fu-fei-she-que.html" style="text-align:center"><h4>不贵、回报超高的付费社区都有哪些？（知识星球）</h4></a>
+</div>
+
+</div>
+
+<div class="row related">
+  <!-- Google 匹配内容页面-->
+<ins class="adsbygoogle"
+   style="display:block"
+   data-ad-format="autorelaxed"
+   data-ad-client="ca-pub-8176866190626448"
+   data-ad-slot="6443696990"></ins>
+<script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+
+            </article>
+        </div>
+        <aside class="visible-sm-block visible-md-block visible-lg-block rsidebar">
+            <div class="row rsidebar-content">
+  <div class="col-xs-12 rsidebar-element searchbar">
+    <form action="https://www.google.com/search" class="searchform" method="get" name="searchform" target="_blank">
+    <div class="row">
+      <div class="col-xs-12 rsidebar-element">
+        <input name="sitesearch" type="hidden" value="lijiaocn.com">
+        <input autocomplete="on" class="form-controls search" name="q" placeholder="站内搜索" required="required"  type="text">
+        <button class="button" type="submit">Google</button>
+      </div>
+    </div>
+    </form>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <a href="/好货/2010/10/10/sites.html"><h3>精品商城</h3></a>
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=WYppWas1DZpVXZmcDOwMTPklWYmAjMzUjMy0DZp9VZ0l2cmYiRyUSbvNmLzYTMuU3b5ZkMlYkMlE0MlAHd0hWP0Zibj9">网易严选</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=j9WYppWas1DZpVXZmczM3ETPklWYmAjMzUjMy0DZp9VZ0l2cmYiJGJTJt92YuEGbvF2auc3d3ZkMlYkMlE0MlAHd0hWP0Zib">考拉海购</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=uN2bhlmapxWPklWdlZSMyYTPklWYmAjMzUjMy0DZp9VZ0l2cmYiRyUSbvNmLllma1d2bt5yd3dnRyUiRyUSQzUCc0RHa9QnJ">蘑菇街</a>
+    <br>
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=lAHd0hWP0Zibj9WYppWas1DZpVXZmQDOzMTPklWYmAjMzUjMy0DZp9VZ0l2cmYiJpFWbvVHZfB3ckR0Ml02byZmeGNTJGJTJt92Yu8Wd69WY6ZkMlYkMlE0M">造作</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=m0DZpVXZmITO5MTPklWYmAjMzUjMy0DZp9VZ0l2cm02bj5CdyF2d55yd3dnRyUiRyUSQzUycwRHdo1Dd" >艺网</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=ibj9WYppWas1DZpVXZmMDMxITPklWYmAjMzUjMy0DZp9VZ0l2cmYiJuNmLt92YukHbu9WZz9mcuc3d3ZkMlYkMlE0MlAHd0hWP0Z">roseonly</a>
+    <br>
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?site_id=224482&lid=4193&aid=61&euid=lijiaocn&t=http%3A%2F%2Fwww.360buy.com%2F">京东</a>&nbsp;
+    <a target="_blank" style="" href="https://www.tmall.com/" isconvert="1">天猫</a>&nbsp;
+    <a target="_blank" style="" href="https://www.taobao.com/" isconvert="1">淘宝</a>&nbsp;
+    <a target="_blank" style="" href="https://www.amazon.cn?tag=znrio-23">亚马逊</a>
+    <br>
+    <br>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <img src="/class/img/rsidebar/xiaomiquan-money.jpg"></img>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <a target="_blank" href="https://www.lijiaocn.com/好货/2018/04/25/fu-fei-she-que.html"><h4>不贵、回报超高的付费社区都有哪些？（知识星球）</h4></a>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <img src="/class/img/rsidebar/xiaomiquan-caoz.jpg"></img>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <img src="/class/img/rsidebar/xiaomiquan-ziliu.jpg"></img>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <img src="/class/img/rsidebar/wechat-class.jpg"></img>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+  <!-- 右侧边栏广告 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="2723439605"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+
+  <div class="col-xs-12 rsidebar-element">
+  <!-- 右侧边栏广告2 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="4426808013"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+
+  <div class="col-xs-12 rsidebar-element">
+  <!-- 右侧边栏广告3 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="3551466770"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+        </aside>
+    </section>
+
+    <footer class="container-fluid foot">
+    <p>
+<span></span>
+<span>Copyright @2011-2019 All rights reserved.</span>
+<span>lijiaocn@foxmail.com</span>
+</p>
+<p>
+<span>友情链接:&nbsp</span> 
+<span><a href="https://www.baidu.com">百度</a>&nbsp</span>
+<span><a href="https://www.google.com">Google</a>&nbsp</span>
+</p>
+
+    </footer>
+
+    <script src="/class/assets/js/jquery-1.24.4.min.js"></script>
+    <script src="/class/assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="/class/assets/js/body.js"></script>
+    <script type="text/javascript" src="/js/duomai.body.js"></script>
+    <script type="text/javascript" src="/js/taobao.body.js"></script>
+</body>
+</html>

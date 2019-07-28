@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="陈皓，网名左耳朵耗子。我目前在创业，MegaEase 是我的公司，致力于为企业提供高可用、高并发、高性能的分布式技术产品，同时也提供物联网（IoT）方向的技术产品。,陈皓、左耳朵耗子、耗子叔、极客时间、技术实践,">
+<meta name="keywords" content="陈皓,左耳朵耗子,耗子叔,极客时间,技术实践极客出品">
+<meta name="author" content="">
+
+<title>洞悉技术的本质，享受科技的乐趣-陈皓-极客时间|精品网课</title>
+
+<link rel="stylesheet" type="text/css" href="/class/assets/bootstrap-3.3.7/css/bootstrap.min.css">
+<!--link rel="stylesheet" type="text/css" href="/class/assets/bootstrap-3.3.7/css/bootstrap-theme.min.css"-->
+<link rel="stylesheet" type="text/css" href="/class/assets/css/default.css">
+<link rel="stylesheet" type="text/css" href="/class/assets/css/highlight.css">
+<link rel="alternate" type="application/rss+xml" title="精品网课" href="/feed.xml">
+<link rel="icon" href="/favicon.ico">
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@graph":[
+    {
+      "@type": "Organization",
+      "logo": "https://www.lijiaocn.com/class/img/logo-112x112.jpg",    //LOGO图片地址，必须是112x112，.jpg,.png,.gif
+      "url": "https://www.lijiaocn.com"               //与Logo相关联的url
+    },
+/*   
+    {   
+      "@type": "WebSite",
+      "url": "https://www.lijiaocn.com",              //被搜索的网站
+      "potentialAction": {
+        "@type": "SearchAction", 
+                                                      //targe指定的域名必须是站点域名，不能用第三方搜索
+        "target": "https://www.lijiaocn.com/search?q={search_term_string}+site%3Alijiaocn.com", 
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Person",                         //社交账号
+	  "name": "精品网课",                    //组织或个人名称
+      "url": "https://www.lijiaocn.com",         //网站地址
+      "sameAs": [
+        "http://www.facebook.com/your-profile",  //社交账号地址，不支持的国内的
+        "http://instagram.com/yourProfile",
+        "http://www.linkedin.com/in/yourprofile",
+        "http://plus.google.com/your_profile"
+      ]
+    },
+*/
+    {
+      "@type": "BreadcrumbList",
+       "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          
+          
+          "name": "极客技术专栏",
+          "item": "https://www.lijiaocn.com/class/c/geek/"
+       },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "极客出品",
+          "item": "https://www.lijiaocn.com/class/t/all#极客出品"
+       }]
+    },
+    {
+      "@type": "Article",
+      "dateModified": "2015-02-05T08:00:00+08:00",
+      "datePublished": "2015-02-05T08:00:00+08:00",
+      "headline": "洞悉技术的本质，享受科技的乐趣-陈皓-极客时间",
+      "image": [                                                //提供三张不同比例的高清图片，长x宽 >= 300 000 
+        "https://www.lijiaocn.com/class/img/cover/1x1/geek-chen-hao.jpg",  //至少：600*600 = 360 000
+        "https://www.lijiaocn.com/class/img/cover/4x3/geek-chen-hao.jpg",  //至少：800*600 = 480 000
+        "https://www.lijiaocn.com/class/img/cover/16x9/geek-chen-hao.jpg"  //至少：960*540 = 518 400
+      ],
+      "author": {
+        "@type": "Person",
+        "name": ""    //作者名称
+      },
+      "publisher": {
+         "@type": "Organization",
+         "name": "精品网课",                          //发布机构名称
+         "logo": {
+           "@type": "ImageObject",
+           "url": "https://www.lijiaocn.com/class/img/logo-112x112.jpg" //发布机构Logo,遵循
+         }
+      },
+      "description": "陈皓，网名左耳朵耗子。我目前在创业，MegaEase 是我的公司，致力于为企业提供高可用、高并发、高性能的分布式技术产品，同时也提供物联网（IoT）方向的技术产品",
+      "mainEntityOfPage": "https://www.lijiaocn.com/class/geek/2019/07/29/geek-chen-hao/",       //网页权威链接，无重复网页就设置成当前页地址
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "xpath": [
+          "/html/head/title",                              //指向head中的title
+          "/html/head/meta[@name='description']/@content"  //指向head中的description
+         ]
+      }
+    }
+  ]
+ }
+</script>
+
+
+
+<!--Google ads 全局依赖代码 -->
+<script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics 全局依赖代码-->
+<script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-105389858-1"></script>
+<!-- 需要尽早执行的js代码 -->
+<script async="async" src="/class/assets/js/head.js" ></script>
+
+</head>
+<body class="body custom-background">
+    <nav class="navbar navbar-fixed-static topnav">
+        <!-- display sm md lg -->
+<div class="container" >
+  <div class="navbar-header">
+    <button id="navb" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#categories" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar" style="color:black"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="navbar-brand hidden-sm">
+      <span><a href="https://www.lijiaocn.com/class/" title="主页">精品网课</a></span>
+      <span class="glyphicon glyphicon-hand-right" style="margin-left:15px"></span>
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" id="categories">
+    <ul class="nav navbar-nav">
+       
+      
+      
+      <li><a href="/class/c/wangyi2/">网易精品课</a></li>
+       
+      
+      
+      <li><a href="/class/c/wangyi1/">网易专业课</a></li>
+       
+      
+      
+      <li><a href="/class/c/geek/">极客技术专栏</a></li>
+      
+      <li><a href="/class/t/all/">标签</a></li>
+    </ul>
+  </div>
+</div>
+
+    </nav>
+
+    <!--aside class="lsidebar"></aside-->
+
+    <section class="banner">
+        
+    </section>
+
+    <section class="container mainwrapper">
+        <div class="main">
+            <article class="center">
+                <div class="row title">
+  <h1>洞悉技术的本质，享受科技的乐趣-陈皓-极客时间</h1>
+</div>
+
+<div class="row pageheader">
+  <p>
+<span>
+<a target="_blank" style="color:red;font-weight:bold" href="https://www.lijiaocn.com/discount/">淘宝/天猫优惠券</a>&nbsp&nbsp&nbsp
+<a target="_blank" style="color:red;font-weight:bold" href="https://c.duomai.com/track.php?k=WYppWas1DZpVXZmcDOwMTPklWYmAjMzUjMy0DZp9VZ0l2cmYiRyUSbvNmLzYTMuU3b5ZkMlYkMlE0MlAHd0hWP0Zibj9">网易严选，品味专用</a>
+</span>
+</p>
+
+
+</div>
+
+<div class="row top_ad">
+  <!-- 顶部条幅广告 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="1000173679"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  <br>
+</div>
+
+
+
+
+<div class="row author">
+  <img src="/class/img/cover/16x9/geek-chen-hao.jpg" alt="洞悉技术的本质，享受科技的乐趣-陈皓-极客时间"/>
+  <br>
+  <p>
+
+<span class="glyphicon glyphicon-folder-open"></span>
+
+
+<span>&nbsp<a href="/class/c/geek/">极客技术专栏</a>&nbsp</span>
+
+
+
+<span class="glyphicon glyphicon-tag"></span>
+<span><a href="/class/t/all/#极客出品">极客出品</a>&nbsp</span>
+
+
+<span><a href="http://qr.liantu.com/api.php?text=https://www.lijiaocn.com/class/geek/2019/07/29/geek-chen-hao/">微信收藏</a></span>
+</p>
+
+</div>
+
+
+<div class="row top_social">
+  
+</div>
+
+<div class="row content">
+  <h2 id="本篇目录">本篇目录</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#本篇目录" id="markdown-toc-本篇目录">本篇目录</a></li>
+  <li><a href="#说明" id="markdown-toc-说明">说明</a></li>
+  <li><a href="#内容介绍" id="markdown-toc-内容介绍">内容介绍</a></li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<h2 id="说明">说明</h2>
+
+<p>这是「左耳朵耗子」陈皓在极客时间上开辟的专栏，分享技术、成长、管理方面的干货知识。</p>
+
+<p>订阅之后可以在移动端和PC端<code class="highlighter-rouge">永久阅读</code>，<strong>新用户可以领取</strong> ：<a href="https://time.geekbang.org/activity/getinvite?gk_ucode=E274D90C022D49">极客时间首次注册30元优惠券</a></p>
+
+<p><img src="/class/img/article/geek-chen-hao.jpeg" alt="洞悉技术的本质，享受科技的乐趣-陈皓-极客时间" width="250px" /></p>
+
+<h2 id="内容介绍">内容介绍</h2>
+
+<div class="_1kh1ihh6_0"><p>你好，我是陈皓，网名左耳朵耗子。我目前在创业，MegaEase 是我的公司，致力于为企业提供高可用、高并发、高性能的分布式技术产品，同时也提供物联网（IoT）方向的技术产品。</p>
+<p>我之前在阿里巴巴、亚马逊、汤森路透等公司任职，职业背景是金融和电子商务行业，主要研究的技术方向是一些大规模分布式系统的基础架构。</p>
+<p>从大学毕业一直做技术工作，到今天有 20 年了，还在写代码，因为我对技术有很大的热情。我从 2002 年开始写技术博客，到 2009 年左右开始在独立的域名 <a href="http://CoolShell.cn">CoolShell.cn</a>（酷壳）上分享我对技术的一些见解和心得。</p>
+<p>本来只想记录一下，没想到得到了很多人的认可，这对我来说是一个不小的鼓励。我的文章和分享始终坚持观点鲜明的特点，因为我希望可以引发大家的讨论和批评，这样分享才更有意义。</p>
+<p>无论我的观点是否偏激、不成熟，或者言辞犀利，在经历过大家的批评和讨论后，我都能够从中得到不在我视角内的思考和认知，这对我来说是非常重要的补充，对我的个人成长非常重要。</p>
+<p>我相信，看到这些文章和讨论的人，也能从中收获到更多的东西。</p>
+<p>坦率地讲，刚收到专栏撰写邀请的时候，我心里面是拒绝的。正如前面所说的，我分享的目的是跟大家交流和讨论，我认为，全年付费专栏这样的方式可能并不好。而且，付费专栏还有文章更新频率的 KPI，这对于像我这样一定要有想法才会写文章的人来说是很痛苦的，因为我不想为了写而写。</p>
+<p>所以，最初，我是非常不情愿的。</p>
+<p>极客邦科技的编辑跟我沟通过很多次，也问过我是否在做一些收费的咨询或是培训，并表明这个专栏就是面对这样的场景的。我想想也是。我其实从 2003 年就开始为很多企业做内部的培训和分享了。</p>
+<p>这些培训涵盖了很多方面，如软件团队管理、架构技术、编程语言、操作系统等，以及一些为企业量身定制的咨询或软件开发，这些都是收费的。</p>
+<p>而我一直以来也没有把这些内容分享在我的博客里，主要原因是我觉得这些内容是有商业价值的，是适合收费的。它们都是实实在在的，是我多年来对实战经验的深入总结和思考，非常来之不易。</p>
+<p>我不太舍得拿出来大范围地分享，以前基本上仅小范围地在企业内部比较封闭的环境里讲讲。所以说，我这边其实是有两种分享，一种是企业内的分享，一种则是像 CoolShell 或是大会这样的公开分享。</p>
+<p>前者更企业化一些，后者更通俗化一些。</p>
+<p>在这个付费专栏中，除了继续保持观点鲜明的行文风格，我会分享一些与个人或企业切身利益更为相关的内容，或者说更具指导性、更有商业价值的东西。而 CoolShell，我还会保持现有的风格继续写下去。</p>
+<!-- [[[read_end]]] -->
+<p>正如这个专栏的 Slogan 所说：“洞悉技术的本质，享受科技的乐趣”，我会在这个专栏里分享包括但不限于如下这些内容。</p>
+<h1>技术</h1>
+<p>对于技术方面，我不会写太多关于知识点的东西，因为这些知识点你可以自行 Google 可以 RTFM。我要写的一定是以体系化的，而且要能直达技术的本质。入行这 20 年来，我最擅长的就是架构和开发各种大规模的系统，所以，我会有 2-3 个和分布式系统相关的系列文章。</p>
+<p>我学过也用过好多编程语言，所以，也会有一系列的关于编程本质的文章。而我对一些基础知识研究得也比较多，所以，还会有一系列与基础知识相关的文章。</p>
+<p>当然，其中还会穿插一些其它的技术文章，比如一些热点事件，还有一些经验之谈，包括我会把我的《程序员技术练级攻略》在这个专栏里重新再写一遍。这些东西一定会让你有醍醐灌顶的感觉。</p>
+<h1>成长</h1>
+<p>在过去这 20 年中，我感觉到，很多人都非常在意自己的成长。所以，我会分享一堆我亲身经历的，也是我自己实验的与个人发展相关的文章。</p>
+<p>比如，如何利用技术变现、如何面试、如何选择新的技术、如何学习、如何管理自己的时间、如何管理自己的老板和工作、如何成为一个 Leader……这些东西一定会对你有用。（但是，我这里一定不会有速成的东西。一切都是要花时间和精力的。如果你想要速成，你不应该来订阅我的专栏。）</p>
+<h1>管理</h1>
+<p>这 20 年，我觉得做好技术工作的前提是，得做好技术的管理工作。只有管理好了软件工程和技术团队，技术才能发挥出最大的潜力。大多数的技术问题都是管理上的问题。</p>
+<p>所以，我会写上一系列的和管理相关的文章，涵盖管理三个要素：团队、项目和管理者自己。比如，人员招聘、绩效考核、提升士气、解决冲突、面对变化、沟通说服、项目管理、任务排期、会议、远程管理，等等。</p>
+<p>这些内容都是我在外企工作时，接受到的世界顶级管理培训机构培训内容，我会把我的实践写出来分享给你。这其中一定少不了亚马逊相关的各种实践。这些东西，我和很多公司和大佬都讲过，到目前为止还没有人不赞的。</p>
+<p><img src="https://static001.geekbang.org/resource/image/7f/7b/7f428c8dd8f26668a727bd46227ec17b.jpg" alt="" /></p>
+<p>为了对付费用户负责，保证文章能够达到收费的质量，我承诺这个专栏的每一篇文章一定是用心创作的，而且是可以让你从中受益的。</p>
+<p>但因为是第一次做全年专栏，收费也让我有一定的压力，所以，我非常希望你能够跟我分享你的感受和体会。</p>
+<p>我会根据你的反馈及时做出调整和修正，并不断努力提高文章的质量和思想高度，以满足你对有价值、有营养的文章的需求。</p>
+</div>
+
+<p>订阅之后可以在移动端和PC端<code class="highlighter-rouge">永久阅读</code>，<strong>新用户可以领取</strong> ：<a href="https://time.geekbang.org/activity/getinvite?gk_ucode=E274D90C022D49">极客时间首次注册30元优惠券</a></p>
+
+<p><img src="/class/img/article/geek-chen-hao.jpeg" alt="洞悉技术的本质，享受科技的乐趣-陈皓-极客时间" width="250px" /></p>
+
+<h2 id="参考">参考</h2>
+
+<ol>
+  <li><a href="https://www.lijiaocn.com" title="李佶澳的博客">李佶澳的博客</a></li>
+</ol>
+
+
+</div>
+
+<div class="row" >
+  <br>
+  
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align:left;padding:0px">
+
+<span class="glyphicon glyphicon-chevron-left"/>上一篇：<a href="/class/geek/2019/07/28/geek-linux-ni-peng-fei/">快速找到Linux系统瓶颈-微软工程师-倪鹏飞-极客时间</a>
+
+</div>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align:right;padding:0px">
+
+下一篇：<a href="/class/geek/2019/07/29/geek-wang-zheng-data/">数据结构和算法之美-Google 工程师-王争-极客时间</a><span class="glyphicon glyphicon-chevron-right"/>
+
+</div>
+
+
+</div>
+
+<div class="row copyright">
+  <br>
+  <p style="text-align:center">淘宝天猫优惠券（微信扫一扫或长按）</p>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 content">
+		<img src="https://www.lijiaocn.com/img/tuanhaohuo.jpg"></img>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 content">
+		<!-- 底部二维码并列 -->
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8176866190626448"
+			 data-ad-slot="1398175214"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+			 (adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+</div>
+
+</div>
+
+<div class="row page_bottom_ad">
+  <div>
+<a target="_blank" href="https://www.lijiaocn.com/好货/2018/04/25/fu-fei-she-que.html" style="text-align:center"><h4>不贵、回报超高的付费社区都有哪些？（知识星球）</h4></a>
+</div>
+
+</div>
+
+<div class="row related">
+  <!-- Google 匹配内容页面-->
+<ins class="adsbygoogle"
+   style="display:block"
+   data-ad-format="autorelaxed"
+   data-ad-client="ca-pub-8176866190626448"
+   data-ad-slot="6443696990"></ins>
+<script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+
+            </article>
+        </div>
+        <aside class="visible-sm-block visible-md-block visible-lg-block rsidebar">
+            <div class="row rsidebar-content">
+  <div class="col-xs-12 rsidebar-element searchbar">
+    <form action="https://www.google.com/search" class="searchform" method="get" name="searchform" target="_blank">
+    <div class="row">
+      <div class="col-xs-12 rsidebar-element">
+        <input name="sitesearch" type="hidden" value="lijiaocn.com">
+        <input autocomplete="on" class="form-controls search" name="q" placeholder="站内搜索" required="required"  type="text">
+        <button class="button" type="submit">Google</button>
+      </div>
+    </div>
+    </form>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <a href="/好货/2010/10/10/sites.html"><h3>精品商城</h3></a>
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=WYppWas1DZpVXZmcDOwMTPklWYmAjMzUjMy0DZp9VZ0l2cmYiRyUSbvNmLzYTMuU3b5ZkMlYkMlE0MlAHd0hWP0Zibj9">网易严选</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=j9WYppWas1DZpVXZmczM3ETPklWYmAjMzUjMy0DZp9VZ0l2cmYiJGJTJt92YuEGbvF2auc3d3ZkMlYkMlE0MlAHd0hWP0Zib">考拉海购</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=uN2bhlmapxWPklWdlZSMyYTPklWYmAjMzUjMy0DZp9VZ0l2cmYiRyUSbvNmLllma1d2bt5yd3dnRyUiRyUSQzUCc0RHa9QnJ">蘑菇街</a>
+    <br>
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=lAHd0hWP0Zibj9WYppWas1DZpVXZmQDOzMTPklWYmAjMzUjMy0DZp9VZ0l2cmYiJpFWbvVHZfB3ckR0Ml02byZmeGNTJGJTJt92Yu8Wd69WY6ZkMlYkMlE0M">造作</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=m0DZpVXZmITO5MTPklWYmAjMzUjMy0DZp9VZ0l2cm02bj5CdyF2d55yd3dnRyUiRyUSQzUycwRHdo1Dd" >艺网</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=ibj9WYppWas1DZpVXZmMDMxITPklWYmAjMzUjMy0DZp9VZ0l2cmYiJuNmLt92YukHbu9WZz9mcuc3d3ZkMlYkMlE0MlAHd0hWP0Z">roseonly</a>
+    <br>
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?site_id=224482&lid=4193&aid=61&euid=lijiaocn&t=http%3A%2F%2Fwww.360buy.com%2F">京东</a>&nbsp;
+    <a target="_blank" style="" href="https://www.tmall.com/" isconvert="1">天猫</a>&nbsp;
+    <a target="_blank" style="" href="https://www.taobao.com/" isconvert="1">淘宝</a>&nbsp;
+    <a target="_blank" style="" href="https://www.amazon.cn?tag=znrio-23">亚马逊</a>
+    <br>
+    <br>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <img src="/class/img/rsidebar/xiaomiquan-money.jpg"></img>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <a target="_blank" href="https://www.lijiaocn.com/好货/2018/04/25/fu-fei-she-que.html"><h4>不贵、回报超高的付费社区都有哪些？（知识星球）</h4></a>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <img src="/class/img/rsidebar/xiaomiquan-caoz.jpg"></img>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <img src="/class/img/rsidebar/xiaomiquan-ziliu.jpg"></img>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <img src="/class/img/rsidebar/wechat-class.jpg"></img>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+  <!-- 右侧边栏广告 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="2723439605"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+
+  <div class="col-xs-12 rsidebar-element">
+  <!-- 右侧边栏广告2 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="4426808013"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+
+  <div class="col-xs-12 rsidebar-element">
+  <!-- 右侧边栏广告3 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="3551466770"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+        </aside>
+    </section>
+
+    <footer class="container-fluid foot">
+    <p>
+<span></span>
+<span>Copyright @2011-2019 All rights reserved.</span>
+<span>lijiaocn@foxmail.com</span>
+</p>
+<p>
+<span>友情链接:&nbsp</span> 
+<span><a href="https://www.baidu.com">百度</a>&nbsp</span>
+<span><a href="https://www.google.com">Google</a>&nbsp</span>
+</p>
+
+    </footer>
+
+    <script src="/class/assets/js/jquery-1.24.4.min.js"></script>
+    <script src="/class/assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="/class/assets/js/body.js"></script>
+    <script type="text/javascript" src="/js/duomai.body.js"></script>
+    <script type="text/javascript" src="/js/taobao.body.js"></script>
+</body>
+</html>

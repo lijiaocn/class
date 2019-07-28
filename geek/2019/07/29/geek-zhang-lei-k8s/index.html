@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="张磊，Kubernetes 社区的一位资深成员和项目维护者，2012 年，我还在浙大读书的时候，就有幸组建了一个云计算与 PaaS 基础设施相关的科研团队，就这样，我从早期的 Cloud Foundry 社区开始，正式与容器结缘。,极客时间、张磊、kubernetes、深入剖析、容器,">
+<meta name="keywords" content="极客时间,张磊,kubernetes,深入剖析,容器极客出品">
+<meta name="author" content="">
+
+<title>深入剖析Kubernetes-社区维护者-张磊-极客时间|精品网课</title>
+
+<link rel="stylesheet" type="text/css" href="/class/assets/bootstrap-3.3.7/css/bootstrap.min.css">
+<!--link rel="stylesheet" type="text/css" href="/class/assets/bootstrap-3.3.7/css/bootstrap-theme.min.css"-->
+<link rel="stylesheet" type="text/css" href="/class/assets/css/default.css">
+<link rel="stylesheet" type="text/css" href="/class/assets/css/highlight.css">
+<link rel="alternate" type="application/rss+xml" title="精品网课" href="/feed.xml">
+<link rel="icon" href="/favicon.ico">
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@graph":[
+    {
+      "@type": "Organization",
+      "logo": "https://www.lijiaocn.com/class/img/logo-112x112.jpg",    //LOGO图片地址，必须是112x112，.jpg,.png,.gif
+      "url": "https://www.lijiaocn.com"               //与Logo相关联的url
+    },
+/*   
+    {   
+      "@type": "WebSite",
+      "url": "https://www.lijiaocn.com",              //被搜索的网站
+      "potentialAction": {
+        "@type": "SearchAction", 
+                                                      //targe指定的域名必须是站点域名，不能用第三方搜索
+        "target": "https://www.lijiaocn.com/search?q={search_term_string}+site%3Alijiaocn.com", 
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Person",                         //社交账号
+	  "name": "精品网课",                    //组织或个人名称
+      "url": "https://www.lijiaocn.com",         //网站地址
+      "sameAs": [
+        "http://www.facebook.com/your-profile",  //社交账号地址，不支持的国内的
+        "http://instagram.com/yourProfile",
+        "http://www.linkedin.com/in/yourprofile",
+        "http://plus.google.com/your_profile"
+      ]
+    },
+*/
+    {
+      "@type": "BreadcrumbList",
+       "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          
+          
+          "name": "极客技术专栏",
+          "item": "https://www.lijiaocn.com/class/c/geek/"
+       },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "极客出品",
+          "item": "https://www.lijiaocn.com/class/t/all#极客出品"
+       }]
+    },
+    {
+      "@type": "Article",
+      "dateModified": "2015-02-05T08:00:00+08:00",
+      "datePublished": "2015-02-05T08:00:00+08:00",
+      "headline": "深入剖析Kubernetes-社区维护者-张磊-极客时间",
+      "image": [                                                //提供三张不同比例的高清图片，长x宽 >= 300 000 
+        "https://www.lijiaocn.com/class/img/cover/1x1/geek-zhang-lei-k8s.jpg",  //至少：600*600 = 360 000
+        "https://www.lijiaocn.com/class/img/cover/4x3/geek-zhang-lei-k8s.jpg",  //至少：800*600 = 480 000
+        "https://www.lijiaocn.com/class/img/cover/16x9/geek-zhang-lei-k8s.jpg"  //至少：960*540 = 518 400
+      ],
+      "author": {
+        "@type": "Person",
+        "name": ""    //作者名称
+      },
+      "publisher": {
+         "@type": "Organization",
+         "name": "精品网课",                          //发布机构名称
+         "logo": {
+           "@type": "ImageObject",
+           "url": "https://www.lijiaocn.com/class/img/logo-112x112.jpg" //发布机构Logo,遵循
+         }
+      },
+      "description": "张磊，Kubernetes 社区的一位资深成员和项目维护者，2012 年，我还在浙大读书的时候，就有幸组建了一个云计算与 PaaS 基础设施相关的科研团队，就这样，我从早期的 Cloud Foundry 社区开始，正式与容器结缘",
+      "mainEntityOfPage": "https://www.lijiaocn.com/class/geek/2019/07/29/geek-zhang-lei-k8s/",       //网页权威链接，无重复网页就设置成当前页地址
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "xpath": [
+          "/html/head/title",                              //指向head中的title
+          "/html/head/meta[@name='description']/@content"  //指向head中的description
+         ]
+      }
+    }
+  ]
+ }
+</script>
+
+
+
+<!--Google ads 全局依赖代码 -->
+<script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics 全局依赖代码-->
+<script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-105389858-1"></script>
+<!-- 需要尽早执行的js代码 -->
+<script async="async" src="/class/assets/js/head.js" ></script>
+
+</head>
+<body class="body custom-background">
+    <nav class="navbar navbar-fixed-static topnav">
+        <!-- display sm md lg -->
+<div class="container" >
+  <div class="navbar-header">
+    <button id="navb" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#categories" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar" style="color:black"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="navbar-brand hidden-sm">
+      <span><a href="https://www.lijiaocn.com/class/" title="主页">精品网课</a></span>
+      <span class="glyphicon glyphicon-hand-right" style="margin-left:15px"></span>
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" id="categories">
+    <ul class="nav navbar-nav">
+       
+      
+      
+      <li><a href="/class/c/wangyi2/">网易精品课</a></li>
+       
+      
+      
+      <li><a href="/class/c/wangyi1/">网易专业课</a></li>
+       
+      
+      
+      <li><a href="/class/c/geek/">极客技术专栏</a></li>
+      
+      <li><a href="/class/t/all/">标签</a></li>
+    </ul>
+  </div>
+</div>
+
+    </nav>
+
+    <!--aside class="lsidebar"></aside-->
+
+    <section class="banner">
+        
+    </section>
+
+    <section class="container mainwrapper">
+        <div class="main">
+            <article class="center">
+                <div class="row title">
+  <h1>深入剖析Kubernetes-社区维护者-张磊-极客时间</h1>
+</div>
+
+<div class="row pageheader">
+  <p>
+<span>
+<a target="_blank" style="color:red;font-weight:bold" href="https://www.lijiaocn.com/discount/">淘宝/天猫优惠券</a>&nbsp&nbsp&nbsp
+<a target="_blank" style="color:red;font-weight:bold" href="https://c.duomai.com/track.php?k=WYppWas1DZpVXZmcDOwMTPklWYmAjMzUjMy0DZp9VZ0l2cmYiRyUSbvNmLzYTMuU3b5ZkMlYkMlE0MlAHd0hWP0Zibj9">网易严选，品味专用</a>
+</span>
+</p>
+
+
+</div>
+
+<div class="row top_ad">
+  <!-- 顶部条幅广告 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="1000173679"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  <br>
+</div>
+
+
+
+
+<div class="row author">
+  <img src="/class/img/cover/16x9/geek-zhang-lei-k8s.jpg" alt="深入剖析Kubernetes-社区维护者-张磊-极客时间"/>
+  <br>
+  <p>
+
+<span class="glyphicon glyphicon-folder-open"></span>
+
+
+<span>&nbsp<a href="/class/c/geek/">极客技术专栏</a>&nbsp</span>
+
+
+
+<span class="glyphicon glyphicon-tag"></span>
+<span><a href="/class/t/all/#极客出品">极客出品</a>&nbsp</span>
+
+
+<span><a href="http://qr.liantu.com/api.php?text=https://www.lijiaocn.com/class/geek/2019/07/29/geek-zhang-lei-k8s/">微信收藏</a></span>
+</p>
+
+</div>
+
+
+<div class="row top_social">
+  
+</div>
+
+<div class="row content">
+  <h2 id="本篇目录">本篇目录</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#本篇目录" id="markdown-toc-本篇目录">本篇目录</a></li>
+  <li><a href="#说明" id="markdown-toc-说明">说明</a></li>
+  <li><a href="#内容介绍" id="markdown-toc-内容介绍">内容介绍</a></li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<h2 id="说明">说明</h2>
+
+<p>这是 kubernetes 社区成员张磊在极客时间开设的技术专栏，主要分享 kubernetes 相关的知识。</p>
+
+<p>订阅之后可以在移动端和PC端<code class="highlighter-rouge">永久阅读</code>，<strong>新用户可以领取</strong> ：<a href="https://time.geekbang.org/activity/getinvite?gk_ucode=E274D90C022D49">极客时间首次注册30元优惠券</a></p>
+
+<p><img src="/class/img/article/geek-zhang-lei-k8s.jpeg" alt="深入剖析Kubernetes-社区维护者-张磊-极客时间" width="250px" /></p>
+
+<h2 id="内容介绍">内容介绍</h2>
+
+<div><p>你好，我是张磊，Kubernetes 社区的一位资深成员和项目维护者。</p>
+<p>2012 年，我还在浙大读书的时候，就有幸组建了一个云计算与 PaaS 基础设施相关的科研团队，就这样，我从早期的 Cloud Foundry 社区开始，正式与容器结缘。</p>
+<p>这几年里，我大多数时间都在 Kubernetes 项目里从事上游技术工作，也得以作为一名从业者和社区成员的身份，参与和亲历了容器技术从“初出茅庐”到“尘埃落定”的全过程。</p>
+<p>而即使从 2013 年 Docker 项目发布开始算起，这次变革也不过短短 5 年时间，可在现如今的技术圈儿里，不懂容器，没听过 Kubernetes，你还真不好意思跟人打招呼。</p>
+<p>容器技术这样一个新生事物，完全重塑了整个云计算市场的形态。它不仅催生出了一批年轻有为的容器技术人，更培育出了一个具有相当规模的开源基础设施技术市场。</p>
+<p>在这个市场里，不仅有 Google、Microsoft 等技术巨擘们厮杀至今，更有无数的国内外创业公司前仆后继。而在国内，甚至连以前对开源基础设施领域涉足不多的 BAT、蚂蚁、滴滴这样的巨头们，也都从 AI、云计算、微服务、基础设施等维度多管齐下，争相把容器和 Kubernetes 项目树立为战略重心之一。</p><!-- [[[read_end]]] -->
+<p><strong>就在这场因“容器”而起的技术变革中，Kubernetes 项目已然成为容器技术的事实标准，重新定义了基础设施领域对应用编排与管理的种种可能。</strong></p>
+<p>2014 年后，我开始以远程的方式，全职在 Kubernetes 和 Kata Containers 社区从事上游开发工作，先后发起了容器镜像亲密性调度、基于等价类的调度优化等多个核心特性，参与了容器运行时接口、安全容器沙盒等多个基础特性的设计和研发。还有幸作为主要的研发人员和维护者之一，亲历了 Serverless Container 概念的诞生与崛起。</p>
+<p>在 2015 年，我发起和组织撰写了《Docker 容器与容器云》一书，希望帮助更多的人利用容器解决实际场景中的问题。时至今日，这本书的第 2 版也已经出版快 2 年了，受到了广大容器技术读者们的好评。</p>
+<p>2018 年，我又赴西雅图，在微软研究院（MSR）云计算与存储研究组，专门从事基于 Kubernetes 的深度学习基础设施相关的研究工作。</p>
+<p>我与容器打交道的这些年，一直在与关注容器生态的工程师们交流，并经常探讨容器在落地过程中遇到的问题。从这些交流中，我发现总有很多相似的问题被反复提及，比如：</p>
+<ol>
+<li>
+<p>为什么容器里只能跑“一个进程”？</p>
+</li>
+<li>
+<p>为什么我原先一直在用的某个 JVM 参数，在容器里就不好使了？</p>
+</li>
+<li>
+<p>为什么 Kubernetes 就不能固定 IP 地址？容器网络连不通又该如何去 Debug？</p>
+</li>
+<li>
+<p>Kubernetes 中 StatefulSet 和 Operator 到底什么区别？PV 和 PVC 这些概念又该怎么用？</p>
+</li>
+</ol>
+<p>这些问题乍一看与我们平常的认知非常矛盾，但它们的答案和原理却并不复杂。不过很遗憾，对于刚刚开始学习容器的技术人员来说，它们却很难用一两句话就能解释清楚。</p>
+<p>究其原因在于，<strong>从过去以物理机和虚拟机为主体的开发运维环境，向以容器为核心的基础设施的转变过程，并不是一次温和的改革，而是涵盖了对网络、存储、调度、操作系统、分布式原理等各个方面的容器化理解和改造。</strong></p>
+<p>这就导致了很多初学者，对于容器技术栈表现出来的这些难题，要么知识储备不足，要么杂乱无章、无法形成体系。这，也是很多初次参与 PaaS 项目的从业者们共同面临的一个困境。</p>
+<p>其实，容器技术体系看似纷乱繁杂，却存在着很多可以“牵一发而动全身”的主线。比如，Linux 的进程模型对于容器本身的重要意义；或者，“控制器”模式对整个 Kubernetes 项目提纲挈领的作用。</p>
+<p>但是，这些关于 Linux 内核、分布式系统、网络、存储等方方面面的积累，并不会在 Docker 或者 Kubernetes 的文档中交代清楚。可偏偏就是它们，才是真正掌握容器技术体系的精髓所在，是每一位技术从业者需要悉心修炼的“内功”。</p>
+<p><strong>而这，也正是我开设这个专栏的初衷。</strong></p>
+<p>我希望借由这个专栏，给你讲清楚容器背后的这些技术本质与设计思想，并结合着对核心特性的剖析与实践，加深你对容器技术的理解。为此，我把专栏划分成了 4 大模块：</p>
+<ol>
+<li>
+<p><strong>“白话”容器技术基础：</strong> 我希望用饶有趣味的解说，给你梳理容器技术生态的发展脉络，用最通俗易懂的语言描述容器底层技术的实现方式，让你知其然，也知其所以然。</p>
+</li>
+<li>
+<p><strong>Kubernetes 集群的搭建与实践：</strong> Kubernetes 集群号称“非常复杂”，但是如果明白了其中的架构和原理，选择了正确的工具和方法，它的搭建却也可以“一键安装”，它的应用部署也可以浅显易懂。</p>
+</li>
+<li>
+<p><strong>容器编排与 Kubernetes 核心特性剖析：</strong> 这是这个专栏最重要的内容。“编排”永远都是容器云项目的灵魂所在，也是 Kubernetes 社区持久生命力的源泉。在这一模块，我会从分布式系统设计的视角出发，抽象和归纳出这些特性中体现出来的普遍方法，然后带着这些指导思想去逐一阐述 Kubernetes 项目关于编排、调度和作业管理的各项核心特性。“不识庐山真面目，只缘身在此山中”，希望这样一个与众不同的角度，能够给你以全新的启发。</p>
+</li>
+<li>
+<p><strong>Kubernetes 开源社区与生态：</strong>“开源生态”永远都是容器技术和 Kubernetes 项目成功的关键。在这个模块，我会和你一起探讨，容器社区在开源软件工程指导下的演进之路；带你思考，如何同团队一起平衡内外部需求，让自己逐渐成为社区中不可或缺的一员。</p>
+</li>
+</ol>
+<p>我希望通过这些对容器与 Kubernetes 项目的逐层剖析，能够让你面对容器化浪潮时不再踌躇无措，有一种拨云见日的酣畅淋漓。</p>
+<p>最后，我想再和你分享一个故事。</p>
+<p>2015 年我在 InfoQ 举办的第一届容器技术大会上，结识了当时 CoreOS 的布道师 Kelsey Hightower，他热情地和大家一起安装和体验微信，谈笑风生间，还时不时地安利一番自家产品。</p>
+<p>但两年后也就是 2017 年，Kelsey 已经是全世界容器圈儿的意见领袖，是 Google 公司 Kubernetes 项目的首席布道师，而他的座右铭也变为了“只布道，不推销”。此时，就算你漂洋过海想要亲自拜会 Kelsey ，恐怕也得先预约下时间了。</p>
+<p>诚然，Kelsey 的“一夜成名”，与他的勤奋和天赋密不可分，但他对这次“容器”变革走向的准确把握却也是功不可没。这也正应了一句名言：一个人的命运啊，当然要靠自我奋斗，但是也要考虑到历史的行程。</p>
+<p>眼下，你我可能已经错过了互联网技术大爆炸的时代，也没有在数字货币早期的狂热里分到一杯羹。可就在此时此刻，在沉寂了多年的云计算与基础设施领域，一次以“容器”为名的历史变革，正呼之欲出。这一次，我们又有什么理由作壁上观呢？</p>
+<p>如果你也想登上“容器”这趟高速前进的列车，我相信这个专栏，可以帮助你打通学习容器技术的“任督二脉”。<strong>在专栏开始，我首先为你准备了 4 篇预习文章，详细地梳理了容器技术自兴起到现在的发展历程，同时也回答了“Kubernetes 为什么会赢”这个重要的问题，算是我额外为你准备的一份开学礼物吧。</strong></p>
+<p>机会总是留给有准备的人，现在就让我们一起开启这次充满挑战的容器之旅！</p>
+<p><img src="https://static001.geekbang.org/resource/image/47/55/47a6f3bf6b92d58512d5a2ed0a556f55.jpg" alt="" /></p>
+</div>
+
+<p>订阅之后可以在移动端和PC端<code class="highlighter-rouge">永久阅读</code>，<strong>新用户可以领取</strong> ：<a href="https://time.geekbang.org/activity/getinvite?gk_ucode=E274D90C022D49">极客时间首次注册30元优惠券</a></p>
+
+<p><img src="/class/img/article/geek-zhang-lei-k8s.jpeg" alt="深入剖析Kubernetes-社区维护者-张磊-极客时间" width="250px" /></p>
+
+<h2 id="参考">参考</h2>
+
+<ol>
+  <li><a href="https://www.lijiaocn.com" title="李佶澳的博客">李佶澳的博客</a></li>
+</ol>
+
+
+</div>
+
+<div class="row" >
+  <br>
+  
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align:left;padding:0px">
+
+<span class="glyphicon glyphicon-chevron-left"/>上一篇：<a href="/class/geek/2019/07/29/geek-wang-zheng-data/">数据结构和算法之美-Google 工程师-王争-极客时间</a>
+
+</div>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align:right;padding:0px">
+
+下一篇：<a href="/class/geek/2019/07/29/geek-zhoujd-falv/">为程序员打造的专属法律武器-律师-周甲徳-极客时间</a><span class="glyphicon glyphicon-chevron-right"/>
+
+</div>
+
+
+</div>
+
+<div class="row copyright">
+  <br>
+  <p style="text-align:center">淘宝天猫优惠券（微信扫一扫或长按）</p>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 content">
+		<img src="https://www.lijiaocn.com/img/tuanhaohuo.jpg"></img>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 content">
+		<!-- 底部二维码并列 -->
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8176866190626448"
+			 data-ad-slot="1398175214"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+			 (adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+	
+</div>
+
+</div>
+
+<div class="row page_bottom_ad">
+  <div>
+<a target="_blank" href="https://www.lijiaocn.com/好货/2018/04/25/fu-fei-she-que.html" style="text-align:center"><h4>不贵、回报超高的付费社区都有哪些？（知识星球）</h4></a>
+</div>
+
+</div>
+
+<div class="row related">
+  <!-- Google 匹配内容页面-->
+<ins class="adsbygoogle"
+   style="display:block"
+   data-ad-format="autorelaxed"
+   data-ad-client="ca-pub-8176866190626448"
+   data-ad-slot="6443696990"></ins>
+<script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+
+            </article>
+        </div>
+        <aside class="visible-sm-block visible-md-block visible-lg-block rsidebar">
+            <div class="row rsidebar-content">
+  <div class="col-xs-12 rsidebar-element searchbar">
+    <form action="https://www.google.com/search" class="searchform" method="get" name="searchform" target="_blank">
+    <div class="row">
+      <div class="col-xs-12 rsidebar-element">
+        <input name="sitesearch" type="hidden" value="lijiaocn.com">
+        <input autocomplete="on" class="form-controls search" name="q" placeholder="站内搜索" required="required"  type="text">
+        <button class="button" type="submit">Google</button>
+      </div>
+    </div>
+    </form>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <a href="/好货/2010/10/10/sites.html"><h3>精品商城</h3></a>
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=WYppWas1DZpVXZmcDOwMTPklWYmAjMzUjMy0DZp9VZ0l2cmYiRyUSbvNmLzYTMuU3b5ZkMlYkMlE0MlAHd0hWP0Zibj9">网易严选</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=j9WYppWas1DZpVXZmczM3ETPklWYmAjMzUjMy0DZp9VZ0l2cmYiJGJTJt92YuEGbvF2auc3d3ZkMlYkMlE0MlAHd0hWP0Zib">考拉海购</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=uN2bhlmapxWPklWdlZSMyYTPklWYmAjMzUjMy0DZp9VZ0l2cmYiRyUSbvNmLllma1d2bt5yd3dnRyUiRyUSQzUCc0RHa9QnJ">蘑菇街</a>
+    <br>
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=lAHd0hWP0Zibj9WYppWas1DZpVXZmQDOzMTPklWYmAjMzUjMy0DZp9VZ0l2cmYiJpFWbvVHZfB3ckR0Ml02byZmeGNTJGJTJt92Yu8Wd69WY6ZkMlYkMlE0M">造作</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=m0DZpVXZmITO5MTPklWYmAjMzUjMy0DZp9VZ0l2cm02bj5CdyF2d55yd3dnRyUiRyUSQzUycwRHdo1Dd" >艺网</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=ibj9WYppWas1DZpVXZmMDMxITPklWYmAjMzUjMy0DZp9VZ0l2cmYiJuNmLt92YukHbu9WZz9mcuc3d3ZkMlYkMlE0MlAHd0hWP0Z">roseonly</a>
+    <br>
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?site_id=224482&lid=4193&aid=61&euid=lijiaocn&t=http%3A%2F%2Fwww.360buy.com%2F">京东</a>&nbsp;
+    <a target="_blank" style="" href="https://www.tmall.com/" isconvert="1">天猫</a>&nbsp;
+    <a target="_blank" style="" href="https://www.taobao.com/" isconvert="1">淘宝</a>&nbsp;
+    <a target="_blank" style="" href="https://www.amazon.cn?tag=znrio-23">亚马逊</a>
+    <br>
+    <br>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <img src="/class/img/rsidebar/xiaomiquan-money.jpg"></img>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <a target="_blank" href="https://www.lijiaocn.com/好货/2018/04/25/fu-fei-she-que.html"><h4>不贵、回报超高的付费社区都有哪些？（知识星球）</h4></a>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <img src="/class/img/rsidebar/xiaomiquan-caoz.jpg"></img>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <img src="/class/img/rsidebar/xiaomiquan-ziliu.jpg"></img>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+    <img src="/class/img/rsidebar/wechat-class.jpg"></img>
+  </div>
+  <div class="col-xs-12 rsidebar-element">
+  <!-- 右侧边栏广告 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="2723439605"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+
+  <div class="col-xs-12 rsidebar-element">
+  <!-- 右侧边栏广告2 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="4426808013"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+
+  <div class="col-xs-12 rsidebar-element">
+  <!-- 右侧边栏广告3 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="3551466770"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+        </aside>
+    </section>
+
+    <footer class="container-fluid foot">
+    <p>
+<span></span>
+<span>Copyright @2011-2019 All rights reserved.</span>
+<span>lijiaocn@foxmail.com</span>
+</p>
+<p>
+<span>友情链接:&nbsp</span> 
+<span><a href="https://www.baidu.com">百度</a>&nbsp</span>
+<span><a href="https://www.google.com">Google</a>&nbsp</span>
+</p>
+
+    </footer>
+
+    <script src="/class/assets/js/jquery-1.24.4.min.js"></script>
+    <script src="/class/assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="/class/assets/js/body.js"></script>
+    <script type="text/javascript" src="/js/duomai.body.js"></script>
+    <script type="text/javascript" src="/js/taobao.body.js"></script>
+</body>
+</html>

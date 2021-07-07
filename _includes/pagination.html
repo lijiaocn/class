@@ -9,6 +9,9 @@ Include vars:
 {% for post in include.paginator.posts %}
 <div class="row postitem">
 {% if post.cover %}
+    <div class="visible-lg-block col-lg-4">
+        <a href="{{ site.baseurl }}{{ post.url }}"><img src="{{ site.baseurl }}{{ site.img }}/cover/4x3/{{ post.cover }}" alt="{{ post.title }}"/></a>
+    </div>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8" style="padding-left:0px">
         <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
         <div class="postinfo" >
@@ -25,9 +28,6 @@ Include vars:
         <div class="postdesc">
             <p><span>{{ post.description }}...</span><a href="{{ site.baseurl }}{{ post.url }}">more</a></p>
         </div>
-    </div>
-    <div class="visible-lg-block col-lg-4">
-        <a href="{{ site.baseurl }}{{ post.url }}"><img src="{{ site.baseurl }}{{ site.img }}/cover/4x3/{{ post.cover }}" alt="{{ post.title }}"/></a>
     </div>
 {% else %}
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left:0px">

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="精品网课：微软 Azure 的资深工程师，同时也是 Kubernetes 项目维护者，主要负责开源容器编排系统 Kubernetes 在 Azure 的落地实践,一直以来，我都在云计算领域工作">
+<meta name="keywords" content="精品网课,倪鹏飞,极客时间,linux性能优化,系统瓶颈">
+<meta name="author" content="">
+
+<title>快速找到Linux系统瓶颈-微软工程师-倪鹏飞-极客时间 精品网课</title>
+
+<link rel="stylesheet" type="text/css" href="/class/assets/bootstrap-3.3.7/css/bootstrap.min.css">
+<!--link rel="stylesheet" type="text/css" href="/class/assets/bootstrap-3.3.7/css/bootstrap-theme.min.css"-->
+<link rel="stylesheet" type="text/css" href="/class/assets/css/default.css">
+<link rel="stylesheet" type="text/css" href="/class/assets/css/highlight.css">
+<link rel="alternate" type="application/rss+xml" title="精品网课" href="/feed.xml">
+<link rel="icon" href="/favicon.ico">
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@graph":[
+    {
+      "@type": "Organization",
+      "logo": "http://localhost:4006/class/img/logo-112x112.jpg",    //LOGO图片地址，必须是112x112，.jpg,.png,.gif
+      "url": "http://localhost:4006"               //与Logo相关联的url
+    },
+/*   
+    {   
+      "@type": "WebSite",
+      "url": "http://localhost:4006",              //被搜索的网站
+      "potentialAction": {
+        "@type": "SearchAction", 
+                                                      //targe指定的域名必须是站点域名，不能用第三方搜索
+        "target": "https://www.lijiaocn.com/search?q={search_term_string}+site%3Alijiaocn.com", 
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Person",                         //社交账号
+	  "name": "精品网课",                    //组织或个人名称
+      "url": "http://localhost:4006",         //网站地址
+      "sameAs": [
+        "http://www.facebook.com/your-profile",  //社交账号地址，不支持的国内的
+        "http://instagram.com/yourProfile",
+        "http://www.linkedin.com/in/yourprofile",
+        "http://plus.google.com/your_profile"
+      ]
+    },
+*/
+    {
+      "@type": "BreadcrumbList",
+       "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          
+          
+          "name": "极客技术专栏",
+          "item": "http://localhost:4006/class/c/geek/"
+       },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "极客出品",
+          "item": "http://localhost:4006/class/t/all#极客出品"
+       }]
+    },
+    {
+      "@type": "Article",
+      "dateModified": "2015-02-05T08:00:00+08:00",
+      "datePublished": "2015-02-05T08:00:00+08:00",
+      "headline": "快速找到Linux系统瓶颈-微软工程师-倪鹏飞-极客时间",
+      "image": [                                                //提供三张不同比例的高清图片，长x宽 >= 300 000 
+        "http://localhost:4006/class/img/cover/1x1/geek-ni-peng-fei-k8s.jpg",  //至少：600*600 = 360 000
+        "http://localhost:4006/class/img/cover/4x3/geek-ni-peng-fei-k8s.jpg",  //至少：800*600 = 480 000
+        "http://localhost:4006/class/img/cover/16x9/geek-ni-peng-fei-k8s.jpg"  //至少：960*540 = 518 400
+      ],
+      "author": {
+        "@type": "Person",
+        "name": ""    //作者名称
+      },
+      "publisher": {
+         "@type": "Organization",
+         "name": "精品网课",                          //发布机构名称
+         "logo": {
+           "@type": "ImageObject",
+           "url": "http://localhost:4006/class/img/logo-112x112.jpg" //发布机构Logo,遵循
+         }
+      },
+      "description": "微软 Azure 的资深工程师，同时也是 Kubernetes 项目维护者，主要负责开源容器编排系统 Kubernetes 在 Azure 的落地实践,一直以来，我都在云计算领域工作",
+      "mainEntityOfPage": "http://localhost:4006/class/geek/2019/07/29/geek-linux-ni-peng-fei/",       //网页权威链接，无重复网页就设置成当前页地址
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "xpath": [
+          "/html/head/title",                              //指向head中的title
+          "/html/head/meta[@name='description']/@content"  //指向head中的description
+         ]
+      }
+    }
+  ]
+ }
+</script>
+
+
+
+<!--Google ads 全局依赖代码 -->
+<script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics 全局依赖代码-->
+<script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-105389858-1"></script>
+<!-- 需要尽早执行的js代码 -->
+<script async="async" src="/class/assets/js/head.js" ></script>
+
+</head>
+<body class="body custom-background">
+    <nav class="navbar navbar-fixed-static topnav">
+        <!-- display sm md lg -->
+<div class="container" >
+  <div class="navbar-header">
+    <button id="navb" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#categories" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar" style="color:black"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="navbar-brand hidden-sm">
+      <span><a href="http://localhost:4006" title="主页">精品网课</a></span>
+      <span class="glyphicon glyphicon-hand-right" style="margin-left:15px"></span>
+    </div>
+  </div>
+  <div class="collapse navbar-collapse" id="categories">
+    <ul class="nav navbar-nav">
+      <li><a href="/class/">首页</a></li>
+       
+      
+      
+      <li><a href="/class/c/wangyi2/">网易精品课</a></li>
+       
+      
+      
+      <li><a href="/class/c/geek/">极客技术专栏</a></li>
+      
+      <li><a href="/class/t/all/">标签</a></li>
+    </ul>
+  </div>
+</div>
+
+    </nav>
+
+    <!--aside class="lsidebar"></aside-->
+
+    <section class="banner">
+        
+    </section>
+
+    <section class="container mainwrapper">
+        <div class="main">
+            <article class="center">
+                <div class="row title">
+  <h1>快速找到Linux系统瓶颈-微软工程师-倪鹏飞-极客时间</h1>
+</div>
+
+<div class="row pageheader">
+  <p>
+<span>
+<a target="_blank" style="color:red;font-weight:bold" href="https://c.duomai.com/track.php?k=WYppWas1DZpVXZmcDOwMTPklWYmAjMzUjMy0DZp9VZ0l2cmYiRyUSbvNmLzYTMuU3b5ZkMlYkMlE0MlAHd0hWP0Zibj9">网易严选，品味专用</a>
+</span>
+</p>
+
+
+</div>
+
+<div class="row top_ad">
+  <!-- 顶部条幅广告 -->
+<!--ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="1000173679"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script-->
+
+  <br>
+</div>
+
+
+
+
+<div class="row author">
+  <img src="/class/img/cover/16x9/geek-ni-peng-fei-k8s.jpg" alt="快速找到Linux系统瓶颈-微软工程师-倪鹏飞-极客时间"/>
+  <br>
+  <p>
+
+<span class="glyphicon glyphicon-folder-open"></span>
+
+
+<span>&nbsp<a href="/class/c/geek/">极客技术专栏</a>&nbsp</span>
+
+
+
+<span class="glyphicon glyphicon-tag"></span>
+<span><a href="/class/t/all/#极客出品">极客出品</a>&nbsp</span>
+
+
+<span class="glyphicon glyphicon-tag"></span>
+<span><a href="https://www.lijiaocn.com/money/img/self.jpg">微信关注</a></span>
+</p>
+
+</div>
+
+
+<div class="row top_social">
+  
+</div>
+
+<div class="row content">
+  <h2 id="本篇目录">本篇目录</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#本篇目录" id="markdown-toc-本篇目录">本篇目录</a></li>
+  <li><a href="#说明" id="markdown-toc-说明">说明</a></li>
+  <li><a href="#内容介绍" id="markdown-toc-内容介绍">内容介绍</a></li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<h2 id="说明">说明</h2>
+
+<p>这是倪鹏飞（微软工程师）在极客时间上开始的专栏，主讲 Linux 性能优化的思路和方法。</p>
+
+<p>订阅之后可以在移动端和PC端<code class="highlighter-rouge">永久阅读</code>，<strong>新用户可以领取</strong> ：<a href="https://time.geekbang.org/activity/getinvite?gk_ucode=E274D90C022D49">极客时间首次注册30元优惠券</a></p>
+
+<p><img src="/class/img/article/linux-ni-peng-fei.jpeg" alt="Linux 性能优化实战，10分钟帮你找到系统瓶颈-倪鹏飞-极客时间" width="250px" /></p>
+
+<h2 id="内容介绍">内容介绍</h2>
+
+<div><p>你好，我是倪朋飞，微软 Azure 的资深工程师，同时也是 Kubernetes 项目维护者，主要负责开源容器编排系统 Kubernetes 在 Azure 的落地实践。</p><p>一直以来，我都在云计算领域工作。对于服务器性能的关注，可以追溯到我刚参加工作那会儿。为什么那么早就开始探索性能问题呢？其实是源于一次我永远都忘不了的“事故”。</p><p>那会儿我在盛大云工作，忙活了大半夜把产品发布上线后，刚刚躺下打算休息，却突然收到大量的告警。匆忙爬起来登录到服务器之后，我发现有一些系统进程的 CPU 使用率高达 100%。</p><p>当时我完全是两眼一抹黑，可以说是只能看到症状，却完全不知道该从哪儿下手去排查和解决它。直到最后，我也没能想到好办法，这次发布也成了我心中之痛。</p><p>从那之后，我开始到处查看各种相关书籍，从操作系统原理、到 Linux 内核，再到硬件驱动程序等等。可是，学了那么多知识之后，我还是不能很快解决类似的性能问题。</p><p>于是，我又通过网络搜索，或者请教公司的技术大拿，学习了大量性能优化的思路和方法，这期间尝试了大量的 Linux 性能工具。在不断的实践和总结后，我终于知道，怎么<strong>把观察到的性能问题跟系统原理关联起来，特别是把系统从应用程序、库函数、系统调用、再到内核和硬件等不同的层级贯穿起来。</strong></p><!-- [[[read_end]]] --><p>这段学习可以算得上是我的“黑暗”经历了。我想，不仅是我一个人，很多人应该都有过这样的挫折。比如说：</p><ul>
+<li>
+<p>流量高峰期，服务器 CPU 使用率过高报警，你登录 Linux 上去 top 完之后，却不知道怎么进一步定位，到底是系统 CPU 资源太少，还是程序并发部分写的有问题？</p>
+</li>
+<li>
+<p>系统并没有跑什么吃内存的程序，但是敲完 free 命令之后，却发现系统已经没有什么内存了，那到底是哪里占用了内存？为什么？</p>
+</li>
+<li>
+<p>一大早就收到 Zabbix 告警，你发现某台存放监控数据的数据库主机的 iowait 较高，这个时候该怎么办？</p>
+</li>
+</ul><p>这些问题或者场景，你肯定或多或少都遇到过。</p><p>实际上，<strong>性能优化一直都是大多数软件工程师头上的“紧箍咒”</strong>，甚至许多工作多年的资深工程师，也无法准确地分析出线上的很多性能问题。</p><p>性能问题为什么这么难呢？我觉得主要是因为性能优化是个系统工程，总是牵一发而动全身。它涉及了从程序设计、算法分析、编程语言，再到系统、存储、网络等各种底层基础设施的方方面面。每一个组件都有可能出问题，而且很有可能多个组件同时出问题。</p><p>毫无疑问，性能优化是软件系统中最有挑战的工作之一，但是换个角度看，<strong>它也是最考验体现你综合能力的工作之一</strong>。如果说你能把性能优化的各个关键点吃透，那我可以肯定地说，你已经是一个非常优秀的软件工程师了。</p><p>那怎样才能掌握这个技能呢？你可以像我前面说的那样，花大量的时间和精力去钻研，从内功到实战一一苦练。当然，那样可行，但也会走很多弯路，而且可能你啃了很多大块头的书，终于拿下了最难的底层体系，却因为缺乏实战经验，在实际开发工作中仍然没有头绪。</p><p>其实，对于我们大多数人来说，<strong>最好的学习方式一定是带着问题学习</strong>，而不是先去啃那几本厚厚的原理书籍，这样很容易把自己的信心压垮。</p><p>我认为，<strong>学习要会抓重点</strong>。其实只要你了解少数几个系统组件的基本原理和协作方式，掌握基本的性能指标和工具，学会实际工作中性能优化的常用技巧，你就已经可以准确分析和优化大多数的性能问题了。在这个认知的基础上，再反过来去阅读那些经典的操作系统或者其它图书，你才能事半功倍。</p><p>所以，在这个专栏里，我会以<strong>案例驱动</strong>的思路，给你讲解 Linux 性能的基本指标、工具，以及相应的观测、分析和调优方法。</p><p>具体来看，我会分为 5 个模块。前 4 个模块我会从资源使用的视角出发，带你分析各种 Linux 资源可能会碰到的性能问题，包括 <strong>CPU 性能</strong>、<strong>磁盘 I/O 性能</strong>、<strong>内存性能</strong>以及<strong>网络性能</strong>。每个模块还由浅入深划分为四个不同的篇章。</p><ul>
+<li>
+<p><strong>基础篇</strong>，介绍 Linux 必备的基本原理以及对应的性能指标和性能工具。比如怎么理解平均负载，怎么理解上下文切换，Linux 内存的工作原理等等。</p>
+</li>
+<li>
+<p><strong>案例篇</strong>，这里我会通过模拟案例，帮你分析高手在遇到资源瓶颈时，是如何观测、定位、分析并优化这些性能问题的。</p>
+</li>
+<li>
+<p><strong>套路篇</strong>，在理解了基础，亲身体验了模拟案例之后，我会帮你梳理出排查问题的整体思路，也就是检查性能问题的一般步骤，这样，以后你遇到问题，就可以按照这样的路子来。</p>
+</li>
+<li>
+<p><strong>答疑篇</strong>，我相信在学习完每一个模块之后，你都会有很多的问题，在答疑篇里，我会拿出提问频次较高的问题给你系统解答。</p>
+</li>
+</ul><p>第 5 个综合实战模块，我将为你还原真实的工作场景，手把手带你在“<strong>高级战场</strong>”中演练，这样你能把前面学到的所有知识融会贯通，并且看完专栏，马上就能用在工作中。</p><p>整个专栏，我会把内容尽量写得通俗易懂，并帮你划出重点、理出知识脉络，再通过案例分析和套路总结，让你学得更透、用得更熟。</p><p>明天就要正式开课了，开始之前，我要把何炅说过的那句我特别认同的鸡汤送给你，“<strong>想要得到你就要学会付出，要付出还要坚持；如果你真的觉得很难，那你就放弃，如果你放弃了就不要抱怨。人生就是这样，世界是平衡的，每个人都是通过自己的努力，去决定自己生活的样子。</strong>”</p><p>不为别的，就希望你能和我坚持下去，一直到最后一篇文章。这中间，有想不明白的地方，你要先自己多琢磨几次；还是不懂的，你可以在留言区找我问；有需要总结提炼的知识点，你也要自己多下笔。你还可以写下自己的经历，记录你的分析步骤和思路，我都会及时回复你。</p><p>最后，你可以在留言区给自己立个 Flag，<strong>哪怕只是在留言区打卡你的学习天数，我相信都是会有效果的</strong>。3 个月后，我们一起再来验收。</p><p>总之，让我们一起携手，为你交付“Linux 性能优化”这个大技能！</p>
+</div>
+
+<p>订阅之后可以在移动端和PC端<code class="highlighter-rouge">永久阅读</code>，<strong>新用户可以领取</strong> ：<a href="https://time.geekbang.org/activity/getinvite?gk_ucode=E274D90C022D49">极客时间首次注册30元优惠券</a></p>
+
+<p><img src="/class/img/article/linux-ni-peng-fei.jpeg" alt="Linux 性能优化实战，10分钟帮你找到系统瓶颈-倪鹏飞-极客时间" width="250px" /></p>
+
+<h2 id="参考">参考</h2>
+
+<ol>
+  <li><a href="https://www.lijiaocn.com" title="李佶澳的博客">李佶澳的博客</a></li>
+</ol>
+
+
+</div>
+
+<div class="row copyright">
+  <br>
+  <p><a style="text-align:center;color:red"href="https://www.lijiaocn.com/money/img/self.jpg">关注公众号（点击）</a></p>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content">
+	<!--div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 content">
+		<img src="https://www.lijiaocn.com/money/img/self.jpg"></img>
+	</div-->
+	<div class="hidden-xs hidden-sm  col-md-12 col-lg-12 content">
+		<!-- 底部二维码并列 -->
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-8176866190626448"
+			 data-ad-slot="1398175214"
+			 data-ad-format="auto"
+			 data-full-width-responsive="true"></ins>
+		<script>
+			 (adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+</div>
+
+</div>
+
+<div class="row" >
+  <br>
+  
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align:left;padding:0px">
+
+<a href="/class/geek/2019/07/29/geek-chen-hao/">洞悉技术的本质，享受科技的乐趣-陈皓-极客时间</a>
+
+</div>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="text-align:right;padding:0px">
+
+<a href="/class/geek/2019/07/29/geek-wang-zheng-data/">数据结构和算法之美-Google 工程师-王争-极客时间</a>
+
+</div>
+
+
+</div>
+
+<div class="row page_bottom_ad">
+  <div>
+	<h4>相关阅读，精选文章</h4>
+</div>
+
+</div>
+
+<div class="row related">
+  <!-- Google 匹配内容页面-->
+<ins class="adsbygoogle"
+   style="display:block"
+   data-ad-format="autorelaxed"
+   data-ad-client="ca-pub-8176866190626448"
+   data-ad-slot="6443696990"></ins>
+<script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+
+            </article>
+        </div>
+        <aside class="visible-sm-block visible-md-block visible-lg-block rsidebar">
+            <div class="row rsidebar-content">
+  <div class="col-xs-12 rsidebar-element searchbar">
+    <form action="https://www.google.com/search" class="searchform" method="get" name="searchform" target="_blank">
+    <div class="row">
+      <div class="col-xs-12 rsidebar-element">
+        <input name="sitesearch" type="hidden" value="lijiaocn.com">
+        <input autocomplete="on" class="form-controls search" name="q" placeholder="站内搜索" required="required"  type="text">
+        <button class="button" type="submit">Google</button>
+      </div>
+    </div>
+    </form>
+  </div>
+
+
+  <!--div class="col-xs-12 rsidebar-element">
+    <h4 style="color:brown">专属公众号（微信扫一扫）</h4>
+    <img src="/class/img/self.jpg"></img>
+  </div-->
+
+  <div class="col-xs-12 rsidebar-element">
+    <a href="/好货/2010/10/10/sites.html"><h3>精品商城</h3></a>
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=WYppWas1DZpVXZmcDOwMTPklWYmAjMzUjMy0DZp9VZ0l2cmYiRyUSbvNmLzYTMuU3b5ZkMlYkMlE0MlAHd0hWP0Zibj9">网易严选</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=j9WYppWas1DZpVXZmczM3ETPklWYmAjMzUjMy0DZp9VZ0l2cmYiJGJTJt92YuEGbvF2auc3d3ZkMlYkMlE0MlAHd0hWP0Zib">考拉海购</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=uN2bhlmapxWPklWdlZSMyYTPklWYmAjMzUjMy0DZp9VZ0l2cmYiRyUSbvNmLllma1d2bt5yd3dnRyUiRyUSQzUCc0RHa9QnJ">蘑菇街</a>
+    <br>
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=lAHd0hWP0Zibj9WYppWas1DZpVXZmQDOzMTPklWYmAjMzUjMy0DZp9VZ0l2cmYiJpFWbvVHZfB3ckR0Ml02byZmeGNTJGJTJt92Yu8Wd69WY6ZkMlYkMlE0M">造作</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=m0DZpVXZmITO5MTPklWYmAjMzUjMy0DZp9VZ0l2cm02bj5CdyF2d55yd3dnRyUiRyUSQzUycwRHdo1Dd" >艺网</a>&nbsp;
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?k=ibj9WYppWas1DZpVXZmMDMxITPklWYmAjMzUjMy0DZp9VZ0l2cmYiJuNmLt92YukHbu9WZz9mcuc3d3ZkMlYkMlE0MlAHd0hWP0Z">roseonly</a>
+    <br>
+    <a target="_blank" style="" href="https://c.duomai.com/track.php?site_id=224482&lid=4193&aid=61&euid=lijiaocn&t=http%3A%2F%2Fwww.360buy.com%2F">京东</a>&nbsp;
+    <a target="_blank" style="" href="https://www.tmall.com/" isconvert="1">天猫</a>&nbsp;
+    <a target="_blank" style="" href="https://www.taobao.com/" isconvert="1">淘宝</a>&nbsp;
+    <a target="_blank" style="" href="https://www.amazon.cn?tag=znrio-23">亚马逊</a>
+    <br>
+    <br>
+  </div>
+
+  <div class="col-xs-12 rsidebar-element">
+    <h4 style="color:brown">关注公众号（微信扫一扫）</h4>
+    <img src="https://www.lijiaocn.com/money/img/self.jpg"></img>
+  </div>
+
+  <div class="col-xs-12 rsidebar-element">
+    <h5 style="color:gray">赞助商广告</h5>
+  <!-- 右侧边栏广告 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="2723439605"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+
+  <div class="col-xs-12 rsidebar-element">
+  <!-- 右侧边栏广告2 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="4426808013"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+
+  <div class="col-xs-12 rsidebar-element">
+  <!-- 右侧边栏广告3 -->
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8176866190626448"
+     data-ad-slot="3551466770"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  </div>
+</div>
+
+        </aside>
+    </section>
+
+    <footer class="container-fluid foot">
+    <p>
+<span></span>
+<span>Copyright @2011-2019 All rights reserved.</span>
+<span>转载请添加原文连接，合作请加微信lijiaocn或者发送邮件: lijiaocn@foxmail.com，备注网站合作</span>
+</p>
+
+<p>
+<span>友情链接:</span>&nbsp;
+<span><a style="color:white" href="/">李佶澳的博客</a></span>&nbsp;
+<span><a style="color:white"  href="/note/">小鸟笔记</a></span>&nbsp;
+<span><a style="color:white"  href="/soft/">软件手册</a></span>&nbsp;
+<span><a style="color:white"  href="/prog/">编程手册</a></span>&nbsp;
+<span><a style="color:white"  href="/oper/">运营手册</a></span>&nbsp;
+<span><a style="color:white"  href="/coder/">爱马影视</a></span>&nbsp;
+<span><a style="color:white"  href="/class/">网络课程</a></span>&nbsp;
+<span><a style="color:white"  href="/skill/">奇技淫巧</a></span>&nbsp;
+<span><a style="color:white"  href="/tutorial/">课程文档</a></span>&nbsp;
+<span><a style="color:white"  href="/wechat/news/">精选文章</a></span>&nbsp;
+<span><a style="color:white"  href="https://www.baidu.com/">百度搜索</a></span>
+<span><a style="color:white"  href="https://www.google.com/">谷歌搜索</a></span>
+</p>
+
+    </footer>
+
+    <script src="/class/assets/js/jquery-1.24.4.min.js"></script>
+    <script src="/class/assets/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="/class/assets/js/body.js"></script>
+    <script type="text/javascript" src="/js/duomai.body.js"></script>
+    <script type="text/javascript" src="/js/taobao.body.js"></script>
+</body>
+</html>

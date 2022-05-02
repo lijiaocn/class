@@ -1,0 +1,25 @@
+I"<h2 id="限时特惠">限时特惠</h2>
+
+<p><strong>限时优惠，火速报名</strong>：<a href="https://study.163.com/course/introduction/1209645807.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">SpringBoot2互联网调优实战:分表-报名学习</a></p>
+
+<h2 id="课程介绍">课程介绍</h2>
+
+<p>快速的掌握不分库只分表实战，无需东奔西走即插即用</p>
+
+<p>本章节以尽量短的时间，为使用者提供最简单的ShardingSphere的快速入门。</p>
+
+<p>严格按照官网和实际生产项目中的抽丝剥茧.</p>
+
+<p>ShardingSphere是一套开源的分布式数据库中间件解决方案组成的生态圈。</p>
+
+<p>它由Sharding-JDBC、Sharding-Proxy和Sharding-Sidecar（计划中）这3款相互独立的产品组成，shardingSphere定位为关系型数据库中间件。</p>
+
+<p>Sharding-JDBC</p>
+
+<p>Sharding-JDBC是Sharding-Sphere的第一个产品，也是Sharding-Sphere的前身，是当当网开源的一个产品。定位为轻量级的Java框架，在Java的JDBC层提供额外服务。 它使用客户端直连数据库，以jar包形式提供服务，无需额外部署和依赖，可理解为增强版的JDBC驱动，完全兼容JDBC和各种ORM框架。他们均提供标准化的数据分片、读写分离、柔性事务和数据治理功能，可适用于如Java同构、异构语言、容器、云原生等各种多样化的应用场景。Sharding-JDBC可以通过Java，YAML，Spring命名空间和Spring Boot Starter四种方式配置，开发者可根据场景选择适合的配置方式。</p>
+
+<p>课程特色 本章节以尽量短的时间，为使用者提供最简单的ShardingSphere的快速入门。</p>
+
+<p><strong>限时优惠，报名地址</strong>：<a href="https://study.163.com/course/introduction/1209645807.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">SpringBoot2互联网调优实战:分表-报名学习</a></p>
+
+:ET

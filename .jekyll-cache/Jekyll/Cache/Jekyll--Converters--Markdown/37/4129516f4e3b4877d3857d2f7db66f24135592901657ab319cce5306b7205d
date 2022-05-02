@@ -1,0 +1,61 @@
+I"\<h2 id="限时特惠">限时特惠</h2>
+
+<p><strong>限时优惠，火速报名</strong>：<a href="https://study.163.com/course/introduction/1005115002.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">Synopsys DC逻辑综合基础-报名学习</a></p>
+
+<h2 id="课程介绍">课程介绍</h2>
+
+<p>Synopsys DC逻辑综合基础</p>
+
+<p>1DC综合概述(逻辑综合的概念、作用和位置)</p>
+
+<p>2虚拟机linux安装DC的流程(下载DC工具/安装环境/安装步骤)</p>
+
+<p>3DC综合基本流程、概念和用法</p>
+
+<p>3.1综合流程</p>
+
+<p>3.2DC的启动和基本操作</p>
+
+<p>3.3工艺库的介绍及配置</p>
+
+<p>3.3.1工艺库的类型(GTECH/DesignWare/目标工艺/符号/链接库)</p>
+
+<p>3.3.2工艺库的格式</p>
+
+<p>3.3.3搜索路径</p>
+
+<p>3.3.4setup文件</p>
+
+<p>3.4读取设计(analyze/elaborate和read_file)</p>
+
+<p>3.5设计环境的定义</p>
+
+<p>3.5.1工艺库的描述(库类/库属性/环境和单元描述)</p>
+
+<p>3.5.2路径延时计算(路径延时的概念和计算)</p>
+
+<p>3.5.3系统接口特性(输入端口驱动特性/输出端口负载/扇出负载)</p>
+
+<p>3.6设计规则约束(set_max_transition/max_fouout)</p>
+
+<p>3.7静态时序分析基础(设计对象/建立时间/保持时间/单元延时和线延时的概念/时序通路)</p>
+
+<p>3.8时序约束</p>
+
+<p>3.8.1时钟的概念和创建(create_clock/create_generated_clock/set_clock_latency/uncertainty/transition)</p>
+
+<p>3.8.2输入输出端口时序设定(set_input_delay/output_delay)</p>
+
+<p>3.8.3非同步设计时序约束(set_false_path/multicycle_path/min/max_delay)</p>
+
+<p>3.9解决多实例问题(uniquify/set_dont_touch/ungroup)</p>
+
+<p>3.10映射优化(架构、逻辑、门级优化/compile)</p>
+
+<p>3.11输出报告网表</p>
+
+<p>3.12综合策略</p>
+
+<p><strong>限时优惠，报名地址</strong>：<a href="https://study.163.com/course/introduction/1005115002.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">Synopsys DC逻辑综合基础-报名学习</a></p>
+
+:ET

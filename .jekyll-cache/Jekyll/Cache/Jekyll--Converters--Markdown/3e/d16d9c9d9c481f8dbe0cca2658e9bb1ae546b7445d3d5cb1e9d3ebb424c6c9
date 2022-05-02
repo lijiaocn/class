@@ -1,0 +1,77 @@
+I"F<h2 id="限时特惠">限时特惠</h2>
+
+<p><strong>限时优惠，火速报名</strong>：<a href="https://study.163.com/course/introduction/1005212012.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">Dream 1.0 Java工程师之八Spring-报名学习</a></p>
+
+<h2 id="课程介绍">课程介绍</h2>
+
+<p>第1节 Spring框架简介</p>
+
+<p>Spring框架布署</p>
+
+<p>Spring核心容器-Ioc</p>
+
+<p>第2节 分层模式下的IoC应用</p>
+
+<p>2.3 基于注解的Ioc</p>
+
+<p>第3节 AOP面向切面编程</p>
+
+<p>AOP的基本原理</p>
+
+<p>第4节 Spring JDBC</p>
+
+<p>JdbcTemplate类</p>
+
+<p>JdbcDaoSupport类</p>
+
+<p>第5节 Spring事务管理</p>
+
+<p>第6节　Spring整合Struts、JDBC</p>
+
+<p>第7节 Spring提供的Hibernate支持</p>
+
+<p>第8节 SSH整合</p>
+
+<p>配置步骤：</p>
+
+<p>1.准备jar包</p>
+
+<p>struts2(spring插件包struts2-spring-plugin.jar)、spring、Hibernate</p>
+
+<p>2.编写代码，构建分层架构</p>
+
+<p>注意：</p>
+
+<p>编写Dao时，Dao父类必须继承HibernateDaoSupport，子类可以获取HibernateTemplate进行增删改查操作</p>
+
+<p>3.配置spring</p>
+
+<p>配置数据源，连接数据库</p>
+
+<p>配置sessionFactory</p>
+
+<p>用bean标签配置dao、service、action，同时配置好依赖关系</p>
+
+<p>配置事务管理策略</p>
+
+<p>4.配置struts</p>
+
+<p>配置struts的对象工厂托管给spring</p>
+
+<constant name="struts.objectFactory" value="spring" />
+
+<p>配置action(注意：Action的class应指定为Spring中bean的id，由spring来管理action)</p>
+
+<p>5.配置web.xml</p>
+
+<p>配置spring核心文件路径,加载spring核心文件</p>
+
+<p>配置ContextLoaderListener监听器启动spring</p>
+
+<p>配置struts核心过滤器，启动struts</p>
+
+<p>第9节 Spring整合Mybatis</p>
+
+<p><strong>限时优惠，报名地址</strong>：<a href="https://study.163.com/course/introduction/1005212012.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">Dream 1.0 Java工程师之八Spring-报名学习</a></p>
+
+:ET

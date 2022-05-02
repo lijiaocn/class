@@ -1,0 +1,60 @@
+I"�<h2 id="限时特惠">限时特惠</h2>
+
+<p><strong>限时优惠，火速报名</strong>：<a href="https://study.163.com/course/introduction/1003630030.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">从零开始学BGP-报名学习</a></p>
+
+<h2 id="课程介绍">课程介绍</h2>
+
+<p>本课程适用于零基础BGP入门学习</p>
+
+<p>实验演示使用的IOS版本：unzip-c7200-advsecurityk9-mz.124-11.T</p>
+
+<p>第一章：基础理论</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1.1 BGP概述
+
+1.2 BGP邻居、消息类型与状态机
+</code></pre></div></div>
+
+<p>第二章：基本配置</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2.1 启动BGP，并配置IBGP和EBGP
+
+2.2 BGP路由通过与路由优化
+
+2.3 演示并讲解BGP下一跳、水平分割与同步
+
+2.4 演示BGP的自动汇总（区别于IGP中的命令）
+
+2.5 fib-failure案例、路由抑制与会话复位
+
+2.6 邻居冗余与EBGP多跳
+</code></pre></div></div>
+
+<p>第三章：BGP基本配置综合实验</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3.1 拓扑需求与实验演示
+</code></pre></div></div>
+
+<p>第四章：BGP属性与路由决策</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4.1 BGP属性详解
+
+4.2 BGP选路规则
+
+4.3 BGP路由决策与属性控制综合实验
+</code></pre></div></div>
+
+<p>第五章：高级配置</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>5.1 BGP地址聚合与验证
+
+5.2 路由黑洞与BGP路由反射器配置
+
+5.3 路由黑洞与BGP联邦配置
+
+5.4 补充：BGP团体配置
+</code></pre></div></div>
+
+<p><strong>限时优惠，报名地址</strong>：<a href="https://study.163.com/course/introduction/1003630030.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">从零开始学BGP-报名学习</a></p>
+
+:ET

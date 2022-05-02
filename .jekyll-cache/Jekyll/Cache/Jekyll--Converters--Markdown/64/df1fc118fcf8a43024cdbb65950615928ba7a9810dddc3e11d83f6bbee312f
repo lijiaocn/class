@@ -1,0 +1,33 @@
+I"r<h2 id="限时特惠">限时特惠</h2>
+
+<p><strong>限时优惠，火速报名</strong>：<a href="https://study.163.com/course/introduction/1209136808.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">剑指京东Offer：流失模型-报名学习</a></p>
+
+<h2 id="课程介绍">课程介绍</h2>
+
+<ol>
+  <li>
+    <p>用plotly，matplotlib进行数据可视化</p>
+  </li>
+  <li>
+    <p>进行特征处理:对不均衡数据进行下采样/上采样，scale, RF填补缺失值，合并特征，去掉多重共线性，连续变量离散化，object变量数值化，热编码。</p>
+  </li>
+  <li>
+    <p>用LR，RF , XGBoost，LightGBM进行模型训练，调整threshold，调参与预测</p>
+  </li>
+  <li>
+    <p>用recall score, F1 score, ROC，PRC，confusion matrix和乘以经济增益的confusion matrix，KS(Kolmogorov-Smirnov)来进行模型评估</p>
+  </li>
+  <li>
+    <p>模型Votting，测试不同的vote weights，提升模型预测的recall, F1 score</p>
+  </li>
+  <li>
+    <p>用XGBoost选取新的特征组合，结合原始数据，用LR进行模型训练，调整threshold，调参数，进行预测</p>
+  </li>
+  <li>
+    <p>根据feature对客户画像和行为进行分析，对即将可能发生的风险进行预防，比如给予promotion</p>
+  </li>
+</ol>
+
+<p><strong>限时优惠，报名地址</strong>：<a href="https://study.163.com/course/introduction/1209136808.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">剑指京东Offer：流失模型-报名学习</a></p>
+
+:ET

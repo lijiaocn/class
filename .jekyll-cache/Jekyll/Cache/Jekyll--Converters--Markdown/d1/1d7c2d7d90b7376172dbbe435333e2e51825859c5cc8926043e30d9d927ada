@@ -1,0 +1,91 @@
+I"�<h2 id="限时特惠">限时特惠</h2>
+
+<p><strong>限时优惠，火速报名</strong>：<a href="https://study.163.com/course/introduction/1004523002.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">Spring Boot实战篇之Shiro-报名学习</a></p>
+
+<h2 id="课程介绍">课程介绍</h2>
+
+<p>【注意：视频中讲解了如何进行应用，shiro的原理】</p>
+
+<p>使用技术</p>
+
+<p>（1）spring boot（整合框架）</p>
+
+<p>（2）spring mvc</p>
+
+<p>（3）spring data jpa（持久化操作）</p>
+
+<p>（4）shiro（安全框架）</p>
+
+<p>（5）thymeleaf（模板引擎）</p>
+
+<p>（6）ehcache（缓存管理）</p>
+
+<p>（7）mysql（数据库）</p>
+
+<p>（8）js/css/img（静态资源使用）</p>
+
+<p>（9）kaptcha（验证码库）</p>
+
+<p>课程目录</p>
+
+<ol>
+  <li>
+    <p>Spring Boot Shiro介绍</p>
+  </li>
+  <li>
+    <p>Spring Boot 搭建无Shiro的框架</p>
+  </li>
+  <li>
+    <p>Spring Boot Shiro拦截</p>
+  </li>
+  <li>
+    <p>Spring Boot Shiro身份认证准备工作</p>
+  </li>
+  <li>
+    <p>Spring Boot Shiro身份认证</p>
+  </li>
+  <li>
+    <p>Spring Boot Shiro权限控制</p>
+  </li>
+  <li>
+    <p>Spring Boot Shiro缓存</p>
+  </li>
+  <li>
+    <p>Spring Boot Shiro记住密码</p>
+  </li>
+  <li>
+    <p>Spring Boot Shiro登录成功之后下载favicon.ico</p>
+  </li>
+  <li>
+    <p>Spring Boot 在thymeleaf使用shiro标签</p>
+  </li>
+  <li>
+    <p>Spring Boot Shiro密码加密算法</p>
+  </li>
+</ol>
+
+<p>12.Spring Boot Shiro使用JS-CSS-IMG</p>
+
+<ol>
+  <li>Spring Boot Shiro限制登录尝试次数</li>
+</ol>
+
+<p>14.Spring Boot Shiro 验证码</p>
+
+<p>Spring Boot Shiro无状态Web</p>
+
+<ol>
+  <li>
+    <p>Spring Boot之Shiro无状态：构建一个简单MVC</p>
+  </li>
+  <li>
+    <p>Spring Boot之Shiro无状态：搭建无状态</p>
+  </li>
+  <li>
+    <p>Spring Boot之Shiro无状态：请求控制拦截</p>
+  </li>
+</ol>
+
+<p><strong>限时优惠，报名地址</strong>：<a href="https://study.163.com/course/introduction/1004523002.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">Spring Boot实战篇之Shiro-报名学习</a></p>
+
+:ET

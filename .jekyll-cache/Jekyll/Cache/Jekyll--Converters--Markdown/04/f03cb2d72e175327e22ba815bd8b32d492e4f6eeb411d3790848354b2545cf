@@ -1,0 +1,49 @@
+I"j<h2 id="限时特惠">限时特惠</h2>
+
+<p><strong>限时优惠，火速报名</strong>：<a href="https://study.163.com/course/introduction/1211397801.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">GPU计算: CUDA 编程从入门到精通-报名学习</a></p>
+
+<h2 id="课程介绍">课程介绍</h2>
+
+<p>本课程介绍NVIDIA GPU 计算的基本知识, 例如 NVIDIA GPU 计算核心架构, 内存架构, 内存模型和执行模型. 在接下来的课程, 将讲述CUDA编程的技术细节, 特别在最后本课程将详细介绍规约操作. 规约是很重要的操作, 并且实现难度大. 通过本课程, 希望学生可以掌握CUDA编程的基本知识,</p>
+
+<p>– GPU 计算基本概念</p>
+
+<p>– CUDA 编程基本概念</p>
+
+<p>– 网格, 线程块, 线程多层次结构</p>
+
+<p>– 网格, 线程块与线程到实际问题如何映射</p>
+
+<p>– 硬件处理器多层次结构</p>
+
+<p>– GPU 多层次内存: 寄存器, 高速缓存, 共享内存, 全局内存</p>
+
+<p>– 线程块与线程块如何调度</p>
+
+<p>– warp 如何划分与调度</p>
+
+<p>– 全局内存如何管理</p>
+
+<p>– 共享内存如何使用</p>
+
+<p>– 如何实现 CUDA 多层次同步: 核函数, 线程块, warp</p>
+
+<p>– 什么是规约算法</p>
+
+<p>– 如何设计高效规约算法</p>
+
+<p>– 如何在warp内构造更小的线程组</p>
+
+<p>– 如何在warp内实现通信</p>
+
+<p>– 合作组 (Cooperative Groups)</p>
+
+<p>– 如何优化CUDA 程序</p>
+
+<p>本课程讲师从事高性能计算和科学计算, 精通 C/C++, 计算数学, 并行计算, 超级计算机, GPU 计算, MPI, OpenMP 和 CUDA. 拥有十多年并行计算和计算科学开发经历, 开发了许多大型软件系统.</p>
+
+<p>课程加入推荐分成计划, 欢迎推荐分享.</p>
+
+<p><strong>限时优惠，报名地址</strong>：<a href="https://study.163.com/course/introduction/1211397801.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">GPU计算: CUDA 编程从入门到精通-报名学习</a></p>
+
+:ET

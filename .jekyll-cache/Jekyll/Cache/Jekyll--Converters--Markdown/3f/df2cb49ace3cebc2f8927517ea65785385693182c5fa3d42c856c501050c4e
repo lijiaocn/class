@@ -1,0 +1,43 @@
+I"�<h2 id="限时特惠">限时特惠</h2>
+
+<p><strong>限时优惠，火速报名</strong>：<a href="https://study.163.com/course/introduction/1209330807.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">IMS实验台教程，买教程送实验台-报名学习</a></p>
+
+<h2 id="课程介绍">课程介绍</h2>
+
+<p>赠送的实验台包括：</p>
+
+<p>本实验台包含了3个vmvare的虚拟机，压缩后总大小为2.9G。解压即可使用。其中有2个虚拟机是安装了WIN7+OpenIC软件模拟IMS客户端，还有1个虚拟机作为集成的IMS服务器。</p>
+
+<p>IMS服务器虚拟机上主要安装了以下功能网元和软件包：</p>
+
+<ul>
+  <li>
+    <p>PCSCF</p>
+  </li>
+  <li>
+    <p>ICSCF</p>
+  </li>
+  <li>
+    <p>SCSCF</p>
+  </li>
+  <li>
+    <p>HSS</p>
+  </li>
+  <li>
+    <p>MySQL（作为HSS的后端）</p>
+  </li>
+  <li>
+    <p>DNS</p>
+  </li>
+  <li>
+    <p>Wireshark</p>
+  </li>
+</ul>
+
+<p>所需硬件资源：台式机或笔记本电脑 1 台，内存为 4G 以上，硬盘500G 以上，并安装好Vmvare12及以上。</p>
+
+<p>除了实验台，还会赠送大量51学通信原创的、通过该实验台模拟的各种故障（含详细步骤和抓包文件）。都可以自己做一遍。扩展性非常强。以下是赠品清单和通过该综合实验台抓到的pcap报文（包括sip、diameter等多个接口的协议。非常全面）</p>
+
+<p><strong>限时优惠，报名地址</strong>：<a href="https://study.163.com/course/introduction/1209330807.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">IMS实验台教程，买教程送实验台-报名学习</a></p>
+
+:ET

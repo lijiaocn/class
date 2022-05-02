@@ -1,0 +1,43 @@
+I"�<h2 id="限时特惠">限时特惠</h2>
+
+<p><strong>限时优惠，火速报名</strong>：<a href="https://study.163.com/course/introduction/1210046211.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">Filebeat 轻量型日志采集器-报名学习</a></p>
+
+<h2 id="课程介绍">课程介绍</h2>
+
+<p>从有日志的那天起，日志收集分析就是极其重要的一件事</p>
+
+<p>不过，以前这些工作一般是运维人员头疼的事</p>
+
+<p>随着大数据的不断发展，架构师、普通开发、甚至是产品经理也必须要关注日志的收集和分析了</p>
+
+<p>而就光日志收集这里，在实际工作中就有非常多的日志要收集，例如web日志、mysql日志等等</p>
+
+<p>原始的办法是一个一个上传下载。一台服务器还好，成百上千台呢？无法想象</p>
+
+<p>后来有了Logstash，日志收集变容易了，从此过上了好日子。只是Logstash大而全有点占资源，好日子过的有点累。。。</p>
+
+<p>这时，elastic团队听到了群众的呼声，了解到群众的疾苦</p>
+
+<p>顺应群众的需求，Filebeat出现了，从此好日子过的轻松了</p>
+
+<p>Filebeat是一个轻量级的日志收集工具，能让我们从容面对成百上千甚至上万台服务器上的日志</p>
+
+<p>但资源占用更小，方式更灵活了</p>
+
+<p>它可以同时收集多个日志、并输出到Logstash或直接输出到ElasticSearch。也可以输出到kafka或Redis里</p>
+
+<p>可以配合ElasticSearch对数据进行解析</p>
+
+<p>它还附带了很多的kibana图表，让不会做可视化的同学可以迅速创建kibana图表来专业的分析数据</p>
+
+<p>简直是日志收集工具中的精灵</p>
+
+<p>学会它，在职场中就能多一个机会，领先一步</p>
+
+<p>所以，还等什么？</p>
+
+<p>​​​​​​​快来学习吧～</p>
+
+<p><strong>限时优惠，报名地址</strong>：<a href="https://study.163.com/course/introduction/1210046211.htm?share=1&amp;shareId=1025206652&amp;utm_campaign=share&amp;utm_medium=iphoneShare&amp;utm_source=&amp;utm_u=1025206652">Filebeat 轻量型日志采集器-报名学习</a></p>
+
+:ET

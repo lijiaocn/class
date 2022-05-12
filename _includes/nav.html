@@ -14,10 +14,8 @@
   </div>
   <div class="collapse navbar-collapse" id="categories">
     <ul class="nav navbar-nav">
-      {% for c in site.categories %} 
-      {% assign key=c[0] %}
-      {% assign infos= site.data.cateinfos %}
-      <li><a href="{{ site.baseurl }}/c/{{ key }}/">{{ infos[key].name }}</a></li>
+      {% for key in site.data.categories %} 
+      <li><a href="{{ site.baseurl }}/c/{{ key }}/">{{ site.data.cateinfos[key].name }}</a></li>
       {% endfor %}
       <li><a href="{{ site.baseurl }}/t/all/">标签</a></li>
     </ul>

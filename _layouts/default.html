@@ -2,12 +2,23 @@
 layout: "base"
 ---
 
-<div class="content">
+
+<div style="text-align:center">
+{% if page.cover %}
+  <img src="{{ site.baseurl }}{{ site.img }}/cover/16x9/{{ page.cover }}" alt="{{ page.title }}"/>
+  <br>
+  {% include pagetag.html %}
+{% else %}
+  {% include pagetag.html %}
+{% endif %}
+</div>
+
+<div>
   {{content}}
 </div>
 
-<!--div class="row" >
+<div>
   <br>
   {% include pre_and_next.html %}
-</div-->
+</div>
 

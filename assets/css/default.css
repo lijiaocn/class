@@ -1,3 +1,8 @@
+/*google广告未填充时，不占用空间：https://support.google.com/adsense/answer/10762946?hl=en*/
+ins.adsbygoogle[data-ad-status="unfilled"] {
+    display: none !important;
+}
+
 ul#markdown-toc {
     list-style:none;
 }
@@ -23,7 +28,7 @@ body {
 .topnav {
     border-radius: 0;
     margin-bottom: 0;
-	width: 100%;
+    width: 100%;
 }
 .topnav span.icon-bar{
     background: white;
@@ -76,7 +81,8 @@ body {
 }
 
 .main .main-body .content{
-    flex-grow: 1
+    flex-grow: 1;
+    max-width: 900px;
 }
 
 .main .main-body .content h1,

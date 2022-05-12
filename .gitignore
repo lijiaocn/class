@@ -2,4 +2,4 @@
 _site/
 .jekyll-metadata
 *.swo
-.jekyll-cache
+.jekyll-cache/

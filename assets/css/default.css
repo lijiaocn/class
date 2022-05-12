@@ -23,6 +23,7 @@ body {
 .topnav {
     border-radius: 0;
     margin-bottom: 0;
+	width: 100%;
 }
 .topnav span.icon-bar{
     background: white;

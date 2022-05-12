@@ -1,0 +1,33 @@
+I"�<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div style="text-align:center"&gt;
+	&lt;!-- Google 匹配内容页面--&gt;
+	&lt;ins class="adsbygoogle"
+	   style="display:block"
+	   data-ad-format="autorelaxed"
+	   data-ad-client="ca-pub-8176866190626448"
+	   data-ad-slot="6443696990"&gt;&lt;/ins&gt;
+	&lt;script&gt;
+	   (adsbygoogle = window.adsbygoogle || []).push({});
+	&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;div style="text-align:center"&gt;
+	&lt;p&gt;查看所有文章：&lt;a href="/tags/all.html" style="font-weight:bold;color:red"&gt;进入&lt;/a&gt;&lt;/p&gt;
+	&lt;p&gt;&lt;span style="font-weight:bold;color:red"&gt;【微信扫码关注】&lt;/span&gt;&lt;/p&gt;
+	&lt;p&gt;&lt;img src="/img/ercode/cur.jpg" style="max-width:500px"&gt;&lt;/img&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div style="text-align:center"&gt;
+	&lt;!-- 顶部条幅广告 --&gt;
+	&lt;ins class="adsbygoogle"
+		 style="display:block"
+		 data-ad-client="ca-pub-8176866190626448"
+		 data-ad-slot="1000173679"
+		 data-ad-format="auto"
+		 data-full-width-responsive="true"&gt;&lt;/ins&gt;
+	&lt;script&gt;
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	&lt;/script&gt;
+&lt;/div&gt;
+</code></pre></div></div>
+
+:ET

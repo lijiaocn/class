@@ -1,9 +1,15 @@
-<div style="text-align:center;">
+<!--div style="text-align:center;">
     {% if page.author %}
     <img style="max-width: 250px" src="{{ site.ercodeimg }}"/>
     <p><a style="text-align:center;color:red" href="{{ site.ercodeimg }}">微信公众号</a></p>
     {% endif %}
+</div-->
+
+{% if page.author %}
+<div style="text-align:center">
+    {% include author.html %}
 </div>
+{% endif %}
 
 <!-- 底部二维码并列 -->
 <!--ins class="adsbygoogle"

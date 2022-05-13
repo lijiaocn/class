@@ -2,23 +2,24 @@
 layout: "base"
 ---
 
-
-<div style="text-align:center">
 {% if page.cover %}
+<div style="text-align:center">
   <img src="{{ site.baseurl }}{{ site.img }}/cover/16x9/{{ page.cover }}" alt="{{ page.title }}"/>
-  <br>
-  {% include pagetag.html %}
-{% else %}
-  {% include pagetag.html %}
-{% endif %}
 </div>
+{% endif %}
 
 <div>
   {{content}}
 </div>
 
-<div>
-  <br>
-  {% include pre_and_next.html %}
+<div class="copyright">
+    {% include copyright.html %}
 </div>
 
+<div style="text-align:center">
+  {% include pagetag.html %}
+</div>
+
+<div>
+  {% include pre_and_next.html %}
+</div>

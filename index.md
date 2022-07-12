@@ -1,6 +1,6 @@
 ---
 layout: default 
-title: "精品网络视频课程汇总"
+title: "网易云课堂限时优惠促销课程汇总"
 createdate: "2019-05-01 14:44:57 +0800"
 changedate: "2019-05-09 01:10:07 +0800"
 noprenext: true
